@@ -10,31 +10,48 @@
         <form method="POST" action="https://www.elformo.com/forms/c1465958-0a50-4dbf-915e-4a7a5c66e909">
             <label for="email">Email
                 <input type="text" name="email" id="email" placeholder="email here">
+<!--                could also use type="email", makes sure there's an @-->
             </label>
+
             <br>
+
             <label for="password">Password
                 <input type="password" name="password" id="password" placeholder="password here">
             </label>
+
             <br>
             <br>
+
             <label for="bio">Bio
                 <br>
                 <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Short description of yourself"></textarea>
             </label>
+
             <br>
             <br>
-            <label>How did you hear about us?
+
+            <fieldset>
+                How did you hear about us?
                 <br>
-                <input type="radio" name="howdidyouhear" value="billboard">Billboard
+
+                <input type="radio" name="howdidyouhear" id="billboard" value="billboard">
+                <label for="billboard">Billboard</label>
                 <br>
-                <input type="radio" name="howdidyouhear" value="radioAd">Radio Advertisement
+
+                <input type="radio" name="howdidyouhear" id="radioAd" value="radioAd">
+                <label for="radioAd">Radio Advertisement</label>
                 <br>
-                <input type="radio" name="howdidyouhear" value="internetAd">Internet Advertisement
+
+                <input type="radio" name="howdidyouhear" id="internetAd" value="internetAd">
+                <label for="internetAd">Internet Advetisement</label>
                 <br>
-                <input type="radio" name="howdidyouhear" value="other">Other
-            </label>
+
+                <input type="radio" name="howdidyouhear" id="other" value="other">
+                <label for="other">Other</label>
+            </fieldset>
+
             <br>
-            <br>
+
             <label for="browser">Which web browser are you using?
                 <br>
                 <select name="browser" id="browser">
