@@ -2,8 +2,12 @@
     color: blueviolet;
     text-align: center;
 }
+#welcome{
+    text-align: center;
+    font-weight: bold;
+}
 
-h2{
+h1{
     color: purple;
     text-decoration: underline;
 }
@@ -25,11 +29,13 @@ body{
 /*LIST RELATED STUFF*/
 
 ul{
-    list-style: square;
-    padding-right: 10px;
+    list-style-image: url("../images/pawprints_18x18.png");
 }
 ol{
-    list-style: upper-roman;
+    list-style: lower-roman;
+}
+li{
+    font-weight: bold;
 }
 
 /*TABLE RELATED STUFF*/
