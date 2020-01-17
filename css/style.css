@@ -1,5 +1,5 @@
 #top {
-    color: blueviolet;
+    color: purple;
     text-align: center;
 }
 #welcome{
@@ -46,10 +46,13 @@ table{
 td, tr{
     padding-left: 50px;
 }
+th{
+    text-decoration: underline;
+}
 
 /*ANCHOR RELATED STUFF*/
 a:link{
-    color: chartreuse;
+    color: purple;
 }
 a:visited{
     color: crimson;
