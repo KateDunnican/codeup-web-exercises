@@ -1,3 +1,56 @@
 #top {
     color: blueviolet;
+    text-align: center;
+}
+
+h2{
+    color: purple;
+    text-decoration: underline;
+}
+
+/*BACKGROUND STUFF*/
+
+body{
+    background-image:url("../images/orangekitty.png"),
+    linear-gradient(to bottom, #f0f8ff, #76B2BB);
+/*    order is important here, image THEN color (if color first, must be transparant so use rgb) */
+    font-family: "Apple Chancery";
+}
+#catbutt{
+    position:fixed;
+    top: 0;
+    right: 0;
+}
+
+/*LIST RELATED STUFF*/
+
+ul{
+    list-style: square;
+    padding-right: 10px;
+}
+ol{
+    list-style: upper-roman;
+}
+
+/*TABLE RELATED STUFF*/
+
+table{
+    font-size: 2em;
+}
+td, tr{
+    padding-left: 50px;
+}
+
+/*ANCHOR RELATED STUFF*/
+a:link{
+    color: chartreuse;
+}
+a:visited{
+    color: crimson;
+}
+a:hover{
+    color: orange;
+}
+a:active{
+    color: yellow;
 }
