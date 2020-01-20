@@ -1,0 +1,31 @@
+body{
+    background: black;
+}
+/*bigdiv contains all the other divs*/
+#bigdiv{
+    width: 885px;
+    height: 589px;
+    margin: 8% auto;
+}
+#blue{
+    width: 34%;
+    height: 100%;
+    background: rgb(4,38,100);
+    float: left;
+    text-align: center;
+}
+        /*star lives within blue div*/
+        #star{
+            height: 45%;
+            padding-top: 50%;
+        }
+#white{
+    width: 100%;
+    height: 50%;
+    background: rgb(255,255,255);
+}
+#red {
+    width: 100%;
+    height: 50%;
+    background: rgb(178, 37, 50);
+}
