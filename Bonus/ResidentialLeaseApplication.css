@@ -1,0 +1,34 @@
+body{
+    font-family: Arial, monospace;
+}
+input{
+    text-decoration: underline;
+}
+header{
+    text-align: center;
+}
+#datetime{
+    text-align: right;
+    font-size: 0.7em;
+}
+#logo{
+    width: 250px;
+    height: 60px;
+}
+#pagetitle{
+    font-weight: normal;
+    font-size: 1.5em;
+}
+#warning{
+    font-size: 0.5em;
+}
+#deets{
+    font-weight: bold;
+    font-size: 0.4em;
+}
+#eachocc{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
