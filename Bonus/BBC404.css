@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+}
+
+
+nav{
+    height: 45px;
+    }
+    #logodiv{
+        height: 25px;
+        width: 255px;
+        float: left;
+    }
+    #linkdiv{
+        float: right;
+        height: 25px;
+        margin-right: 300px;
+        font-family: Arial, "serif";
+        font-weight: bold;
+        font-size: 0.8em;
+    }
+#topnav{
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 45px;
+}
+.nav-item{
+    display: inline-block;
+}
+
+#BBCLogo{
+    height: 25px;
+    padding: 10px 0 0 245px;
+}
+
+
+
+
+header{
+    background: rgb(69, 74, 176);
+    height: 90px;
+    width: 100%;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.2em;
+    font-family: Arial, "serif";
+    line-height: 90px;
+    clear: both;
+}
+.NotFound{
+    padding-left: 240px;
+}
+.Numb{
+    font-weight: normal;
+}
+
+
+
+main{
+    height: 500px;
+    width: 100%;
+}
+footer{
+    height: 100px;
+    width: 100%;
+    background: rgb(76,76,76);
+    float: bottom;
+
+}
+#bottomnav{
+
+}
