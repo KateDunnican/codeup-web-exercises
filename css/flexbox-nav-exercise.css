@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+}
+header{
+    background-color: #848487;
+    height: 50px;
+    width: 100%;
+}
+a{
+    color: black;
+    display: inline-block;
+    text-decoration: none;
+}
+a:hover{
+    color: blue;
+}
+
+.ittybittydivvycommitee{
+    /*padding: 10px;*/
+}
+
+
+    #nav{
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+        #leftstuff{
+            width: 250px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            font-size: small;
+        }
+
+        #middlething{
+            font-size: x-large;
+        }
+
+        #rightstuff{
+            width: 250px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            font-size: small;
+        }
+                #followus{
+                    flex-grow: 1;
+                }
