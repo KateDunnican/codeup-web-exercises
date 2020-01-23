@@ -73,5 +73,6 @@ a {
 
 .card {
     /* This is a flex item */
-    margin-bottom: auto;
+    align-self: center;
+    flex-basis: 50%;
 }

@@ -3,7 +3,6 @@
 }
 header{
     background-color: #848487;
-    /*height: 50px;*/
     width: 100%;
 }
 a{
@@ -20,19 +19,15 @@ a:hover{
     padding: 10px;
 }
 
-
     #nav{
-        /*height: 50px;*/
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
         #leftstuff{
-            /*width: 250px;*/
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
             font-size: small;
             font-family: 'Work Sans', sans-serif;
             font-weight: bold;
@@ -42,20 +37,12 @@ a:hover{
             font-size: 3em;
             padding: .2em 0;
             font-family: 'Montserrat', sans-serif;
-            /*position: absolute;*/
         }
 
         #rightstuff{
-            /*width: 500px;*/
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
             font-size: small;
             font-family: 'Work Sans', sans-serif;
             font-weight: bold;
-            /*background-color: red;*/
         }
-                #followus{
-                    /*flex-grow: 1;*/
-                    /*background-color: #3B94D9;*/
-                }
