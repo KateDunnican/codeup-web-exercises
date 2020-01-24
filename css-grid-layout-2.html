@@ -3,8 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Grid Layout 2</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+        }
+        #wrapper{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 290px 1fr;
+            grid-template-rows: 1.1fr 560px 1fr 1fr;
+            grid-template-areas: "header header"
+                                    "nav article"
+                                    "nav ads"
+                                    "footer footer";
+        }
+        .lildivs{
+            background-color: #0fb784;
+            padding: 20px;
+        }
+        #Header{
+            grid-area: header;
+        }
+        #Nav{
+            grid-area: nav;
+        }
+        #Article{
+            grid-area: article;
+        }
+        #Ads{
+            grid-area: ads;
+        }
+        #Footer{
+            grid-area: footer;
+        }
+    </style>
 </head>
-<body>
 
+
+<body>
+    <div id="wrapper">
+        <div class="lildivs" id="Header">Header</div>
+        <div class="lildivs" id="Nav">Nav</div>
+        <div class="lildivs" id="Article">Article</div>
+        <div class="lildivs" id="Ads">Ads</div>
+        <div class="lildivs" id="Footer">Footer</div>
+    </div>
 </body>
 </html>
