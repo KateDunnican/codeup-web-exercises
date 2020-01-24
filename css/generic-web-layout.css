@@ -1,0 +1,122 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: "Arial";
+}
+
+main{
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    display: grid;
+    grid-template-columns: 0.99fr 810px 1.5fr;
+    /*grid-template-rows: 50px repeat(3, 1fr) 0.5fr 0.25fr 50px;*/
+    grid-template-rows: 45px repeat(3, 320px) 185px 115px 55px;
+    grid-template-areas:
+            "header header header"
+            "menu content1 ads"
+            "menu content2 ads"
+            "menu content3 ads"
+            "menu pages pages"
+            "menu footer footer"
+            "menu powered powered";
+}
+
+.lildivs{
+    padding: 15px;
+}
+#div1{
+    display: flex;
+    grid-area: header;
+    background-color: black;
+    color: white;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 ;
+}
+            .lilerdivs{
+                padding: 0 15px;
+                font-size: 1.1em;
+            }
+#div2{
+    grid-area: menu;
+    background-color: rgb(240,240,240);
+    font-size: 1.1em;
+    padding-top: 10px;
+}
+#div3{
+    grid-area: content1;
+    background-color: white;
+}
+#div4{
+    grid-area: content2;
+    background-color: white;
+}
+#div5{
+    grid-area: content3;
+    background-color: white;
+}
+        div>h1 {
+            color: #76B2BB;
+        }
+#div6{
+    grid-area: ads;
+    background-color: white;
+    padding: 15px 15px 0 0;
+}
+        .lillilads{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90px;
+            border: darkgrey 1px solid;
+            margin: 20px 0 15px 0;
+        }
+        .lilbigads{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 140px;
+            border: darkgrey 1px solid;
+            margin: 0 0 90px 0;
+        }
+#div7{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    grid-area: pages;
+    background-color: white;
+    padding-bottom: 40px;
+}
+        .pagedivs{
+            height: 30px;
+            padding: 10px 20px 30px 15px;
+            background-color: white;
+            color: black;
+        }
+        .pagedivs:hover{
+            background-color: black;
+            color: white;
+        }
+#div8{
+    display: flex;
+    align-items: center;
+    grid-area: footer;
+    background-color: rgb(102,102,102);
+    color: white;
+    font-size: 1.3em;
+}
+#div9{
+    grid-area: powered;
+    background-color: rgb(51,51,51);
+    color: white;
+    padding: 15px;
+}
+        a{
+            color: white;
+        }
