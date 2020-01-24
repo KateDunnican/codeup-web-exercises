@@ -3,8 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <title>Grid Layout 3</title>
-</head>
-<body>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+        }
+        #wrapper {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-template-areas:
+            "one one one one"
+            "two three four four"
+            "two five five six"
+            "two seven eight nine"
+            "two ten ten ten";
+        }
 
+        .lildivs{
+            background-color: orange;
+            padding: 10px;
+            font-size: 3.5em;
+            color: white;
+        }
+        #div1{
+            grid-area: one;
+        }
+        #div2{
+            grid-area: two;
+        }
+        #div3{
+            grid-area: three;
+        }
+        #div4{
+            grid-area: four;
+        }
+        #div5{
+            grid-area: five;
+        }
+        #div6{
+            grid-area: six;
+        }
+        #div7{
+            grid-area: seven;
+        }
+        #div8{
+            grid-area: eight;
+        }
+        #div9{
+            grid-area: nine;
+        }
+        #div10{
+            grid-area: ten;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="wrapper">
+        <div class="lildivs" id="div1">1</div>
+        <div class="lildivs" id="div2">2</div>
+        <div class="lildivs" id="div3">3</div>
+        <div class="lildivs" id="div4">4</div>
+        <div class="lildivs" id="div5">5</div>
+        <div class="lildivs" id="div6">6</div>
+        <div class="lildivs" id="div7">7</div>
+        <div class="lildivs" id="div8">8</div>
+        <div class="lildivs" id="div9">9</div>
+        <div class="lildivs" id="div10">10</div>
+    </div>
 </body>
 </html>
