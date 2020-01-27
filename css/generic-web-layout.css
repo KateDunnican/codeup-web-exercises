@@ -3,7 +3,7 @@
 }
 body{
     margin: 0;
-    font-family: "Arial";
+    font-family: Arial, "Arial Narrow", monospace;
 }
 
 main{
@@ -15,7 +15,7 @@ main{
     display: grid;
     grid-template-columns: 0.99fr 810px 1.5fr;
     /*grid-template-rows: 50px repeat(3, 1fr) 0.5fr 0.25fr 50px;*/
-    grid-template-rows: 45px repeat(3, 320px) 185px 115px 55px;
+    grid-template-rows: 43px repeat(3, 320px) 185px 115px 55px;
     grid-template-areas:
             "header header header"
             "menu content1 ads"
@@ -29,13 +29,13 @@ main{
 .lildivs{
     padding: 15px;
 }
-.lilerdivs{
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-.lilerdivs:hover{
-    background-color: #848487;
+        .lilerdivs{
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .lilerdivs:hover{
+            background-color: #848487;
 }
 #div1{
     display: flex;
@@ -55,23 +55,27 @@ main{
     grid-area: menu;
     background-color: rgb(240,240,240);
     font-size: 1.1em;
-    padding-top: 10px;
+    padding-top: 4px;
 }
 #div3{
     grid-area: content1;
     background-color: white;
 }
 #div4{
+    padding-top: 50px;
     grid-area: content2;
     background-color: white;
 }
 #div5{
+    padding-top: 75px;
     grid-area: content3;
     background-color: white;
 }
-        div>h1 {
-            color: #76B2BB;
-        }
+div>h1 {
+    color: rgb(86,145,136);
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.3em;
+}
 #div6{
     grid-area: ads;
     background-color: white;
