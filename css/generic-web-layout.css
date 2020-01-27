@@ -29,6 +29,14 @@ main{
 .lildivs{
     padding: 15px;
 }
+.lilerdivs{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.lilerdivs:hover{
+    background-color: #848487;
+}
 #div1{
     display: flex;
     grid-area: header;
