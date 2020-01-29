@@ -1,0 +1,39 @@
+.jumbotron{
+    background-image: url("../images/pizza.png");
+}
+h1{
+    display: flex;
+    justify-content: center;
+    background: white;
+    width: 100%;
+    opacity: 75%;
+}
+div>.container{
+    padding: 0;
+}
+.zipsearch{
+    color: #848487;
+    border: #848487 1px solid;
+}
+#bluecard{
+    background: rgb(40, 126, 247);
+    color: white;
+}
+.buttontext{
+    padding-left: 40px;
+}
+.innercard2{
+    margin: 15px 0;
+}
+.nextbutton{
+    display: flex;
+    justify-content: flex-end;
+}
+.squishbutton1{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.squishbutton2{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
