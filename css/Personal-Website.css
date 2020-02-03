@@ -1,0 +1,32 @@
+*{
+    box-sizing: border-box;
+}
+
+#BiggestBaddestDiv{}
+
+/*Jumbotron Stuff*/
+.jumbotron{
+    margin-bottom: 10px;
+    background-color: #76B2BB;
+}
+
+/*Nav Bar Stuff*/
+#nav-tabs{
+    height: 50px;
+}
+a{
+    color: black;
+}
+a:hover{
+    color: black;
+    background-color: paleturquoise;
+}
+
+
+/*FONTS*/
+.HFont{
+    font-family: 'Merriweather', serif;
+}
+.SHFont{}
+.BFont{}
+
