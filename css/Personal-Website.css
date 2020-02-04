@@ -4,6 +4,10 @@
 
 #BiggestBaddestDiv{}
 
+body{
+    /*background-color: #76B2BB;*/
+}
+
 /*Jumbotron Stuff*/
 .jumbotron{
     margin-bottom: 10px;
