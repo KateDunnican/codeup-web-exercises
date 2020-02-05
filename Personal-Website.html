@@ -32,11 +32,20 @@
 <!--JUMBOTRON ENDS-->
 
 <div class="container-fluid" id="BiggestBaddestDiv">
+
+
+
+
+
+
+
+
+
 <!--NAV BAR START-->
 <!--NAV TABS START-->
-<!--    TODO add "navbar-expand-lg" to make it do the hamburger button-->
-    <nav class="navbar-expand-md navbar-light bg-light">
-        <div class="nav nav-tabs navbar-collapse" id="nav-tabs" role="tablist">
+    <!--Nav Bar for >LG-->
+    <nav class="d-none d-lg-block">
+        <div class="nav nav-tabs" id="nav-tabs" role="tablist">
             <a class="nav-item nav-link active" id="nav-about-me-tab" data-toggle="tab" href="#nav-about-me" role="tab"
                aria-controls="nav-about-me" aria-selected="true">
                 About Me
@@ -70,7 +79,24 @@
             </button>
         </div>
     </nav>
+    <!--Nav Bar for <LG-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Features</a>
+                <a class="nav-item nav-link" href="#">Pricing</a>
+                <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </div>
+        </div>
+    </nav>
 <!--NAV TABS END-->
+
+    <br>
 
 <!--NAV CONTENT START-->
     <div class="tab-content" id="nav-tabContent">
@@ -98,8 +124,10 @@
     </div>
 <!--NAV CONTENT END-->
 <!--NAV BAR ENDS-->
-</div>
 
+
+
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
