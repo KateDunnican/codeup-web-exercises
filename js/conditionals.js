@@ -17,6 +17,37 @@
  */
 
 /* ########################################################################## */
+var userNumber = confirm("Would you like to enter a number?");
+
+if (userNumber) {
+    var enteredNumber = parseFloat(prompt("please enter the number:"));
+    var ISitaNumber = !isNaN(enteredNumber);
+    if (typeof ISitaNumber === "number") {
+        alert("Your number + 100 = " + (enteredNumber + 100));
+
+        if (enteredNumber % 2 === 0) {
+            alert("That number is even");
+        } else {
+            alert("That number is odd")
+        }
+
+        if (enteredNumber > 0) {
+            alert("This number is positive")
+        } else if (enteredNumber === 0) {
+            alert("This number is 0")
+        } else {
+            alert("This number is negative")
+        }
+    }
+
+    else {
+        alert("This ain't no number man get outta here");
+    }
+
+}
+else {
+    alert("Well fine then")
+}
 
 /**
  * TODO:
@@ -36,6 +67,23 @@
  * console.logging the function's return value
  */
 
+function analyzeColor(x) {
+    var returnPhrase;
+    if (x === "red") {
+        returnPhrase = "roses are red"
+    }
+    else if (x === "blue") {
+        returnPhrase = "violets are blue"
+    }
+    else {
+        returnPhrase = "cyan lol"
+    }
+    return returnPhrase;
+}
+
+console.log(analyzeColor("blue"));
+
+
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
@@ -49,10 +97,70 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * You should see a different message every time you refresh the page
  */
 
+function randomColorFunc(x) {
+    var returnColor;
+    if (x === "red") {
+        returnColor = "reeeeddddddd"
+    }
+    if (x === "orange") {
+        returnColor = "oraaaangeeee"
+    }
+    if (x === "yellow") {
+        returnColor = "yeeelllooowwwww"
+    }
+    if (x === "green") {
+        returnColor = "greeeeennnn"
+    }
+    if (x === "blue") {
+        returnColor = "bluueueeee"
+    }
+    if (x === "indigo") {
+        returnColor = "indigoooooo"
+    }
+    if (x === "violet") {
+        returnColor = "violeeeeetttt"
+    }
+    return returnColor;
+}
+
+console.log(randomColorFunc(randomColor));
+
 /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
+
+function randomColorFunc2(x) {
+    var returnColor2;
+    switch (x) {
+
+    case "red":
+        returnColor2 = "reeeeddddddd";
+
+    case "orange":
+        returnColor2 = "oraaaangeeee";
+
+    case "yellow":
+        returnColor2 = "yeeelllooowwwww";
+
+    case "green":
+        returnColor2 = "greeeeennnn";
+
+    case "blue" :
+        returnColor2 = "bluueueeee";
+
+    case "indigo:":
+        returnColor2 = "indigoooooo";
+
+    case "violet:":
+        returnColor2 = "violeeeeetttt";
+
+    }
+    return returnColor2;
+}
+
+console.log(randomColorFunc2(randomColor));
+
 
 /**
  * TODO:
@@ -62,6 +170,9 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  */
 
 /* ########################################################################## */
+
+var theChosenColor = prompt("Pick a color, any color");
+console.log(analyzeColor(theChosenColor));
 
 /**
  * TODO:
@@ -83,6 +194,31 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * return value.
  */
 
+var discount = ['1', '2', '3', '4', '5'];
+var randomDiscount = discount[Math.floor(Math.random() * colors.length)];
+
+function calculateTotal(x , y) {
+    var returnString;
+    if (x === "1") {
+        returnString = "Ooooh your NEW total is: $" + (y - (y * .1));
+    }
+    else if (x === "2"){
+        returnString = "Ooooh your NEW total is: $" + (y - (y * .25));
+    }
+    else if (x === "3"){
+        returnString = "Ooooh your NEW total is: $" + (y - (y * .35));
+    }
+    else if(x === "4"){
+        returnString = "Ooooh your NEW total is: $" + (y - (y * .5));
+    }
+    else{
+        returnString = "Ooooh your NEW total is: $" + (y - (y * 1));
+    }
+    return returnString;
+}
+
+console.log(calculateTotal(randomDiscount, 5));
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.
@@ -91,4 +227,12 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
+
+
+var theBill = Number(prompt("What's yo total bill, girl?"));
+
+console.log(calculateTotal(luckyNumber, theBill));
+
+
+
