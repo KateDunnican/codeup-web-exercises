@@ -21,7 +21,7 @@
  * console.log 'helloMessage' to check your work
  */
 
-    var helloMessage = sayHello("Jorge");
+    var helloMessage = sayHello("Kate");
     console.log(helloMessage);
 
 /**

@@ -1,98 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Warmups</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Warmups</title>
+</head>
 
-    <body>
-    <script>
-        function helloWorld(){
-            return "Hello World!";
-        }
-        console.log(helloWorld());
+<body>
+<script>
+    function helloWorld() {
+        return "Hello World!";
+    }
+
+    console.log(helloWorld());
+
     //    ".log, tab" will wrap highlighted text into a console log.
 
-        function quotient(x,y){
-            return x / y
-        }
-/*test*/
-            console.log(quotient(36,6));
+    function quotient(x, y) {
+        return x / y
+    }
 
- /*Warmup for 1/21/19*/
-            function wassup (x){
-                return "Hello " + x + "!";
-            }
-            console.log (wassup("Karen"));
+    /*test*/
+    console.log(quotient(36, 6));
 
-// Warm-up for 1/22
-            function calculateRectangleArea (x,y){
-                return x*y;
-            }
-            console.log (calculateRectangleArea(6,5));
+    /*Warmup for 1/21/19*/
+    function wassup(x) {
+        return "Hello " + x + "!";
+    }
 
-//Warm-up for 1/23
-            function arrayLength(x) {
-                return x.length
-            }
-            console.log(arrayLength(['cat','dog','mouse']));
+    console.log(wassup("Karen"));
 
-//Warm-up for 1/24
-            function return7 (){
-                return 7;
-            }
-            console.log(return7());
+    // Warm-up for 1/22
+    function calculateRectangleArea(x, y) {
+        return x * y;
+    }
 
-//    Warm-up for 1/27
-        // get supplies
-            // 	remove knife from silverware drawer
-            // 	get bread from pantry
-            // 	get PB from pantry
-            // 	get jelly from fridge
-            // 	toaster should be on counter
-        // lay out gathered supplies on the counter by the toaster
-        // use your hands to take bread out of wrapper
-        // insert breads into toaster
-        // toast for 2mins for optimal toastiness
-        // lay two pieces of bread flat next to each other
-        // remove the lids from PB and jelly jars
-        // use knife to scoop 1tbsp PB
-        // smear PB onto first bread
-        // wipe all PB off of knife onto first bread
-        // use same knife to scoop 1tbsp jelly
-        // smear jelly onto second bread
-        // fold breads condiment sides together
-        // slice the sandwich diagonally into triangles
-        // lick knife
-        // put knife in sink
-        // enjoy sandwich
+    console.log(calculateRectangleArea(6, 5));
+
+    //Warm-up for 1/23
+    function arrayLength(x) {
+        return x.length
+    }
+
+    console.log(arrayLength(['cat', 'dog', 'mouse']));
+
+    //Warm-up for 1/24
+    function return7() {
+        return 7;
+    }
+
+    console.log(return7());
+
+    //    Warm-up for 1/27
+    // get supplies
+    // 	remove knife from silverware drawer
+    // 	get bread from pantry
+    // 	get PB from pantry
+    // 	get jelly from fridge
+    // 	toaster should be on counter
+    // lay out gathered supplies on the counter by the toaster
+    // use your hands to take bread out of wrapper
+    // insert breads into toaster
+    // toast for 2mins for optimal toastiness
+    // lay two pieces of bread flat next to each other
+    // remove the lids from PB and jelly jars
+    // use knife to scoop 1tbsp PB
+    // smear PB onto first bread
+    // wipe all PB off of knife onto first bread
+    // use same knife to scoop 1tbsp jelly
+    // smear jelly onto second bread
+    // fold breads condiment sides together
+    // slice the sandwich diagonally into triangles
+    // lick knife
+    // put knife in sink
+    // enjoy sandwich
     //Warm-up for 1/28
-            function firstItem(x){
-                return x[0];
-            }
-            console.log(firstItem(["dog","cat","mouse"]));
+    function firstItem(x) {
+        return x[0];
+    }
+
+    console.log(firstItem(["dog", "cat", "mouse"]));
 
     //Warm-up for 1/29
-            function determineType(x){
-                return typeof(x);
-            }
-            console.log(determineType("Hello"));
+    function determineType(x) {
+        return typeof (x);
+    }
+
+    console.log(determineType("Hello"));
 
     //Warm-up for 2/4
-            function squaredNumDivisibleByThree(x){
-                return (x*x)%3 === 0;
-            }
-            console.log(squaredNumDivisibleByThree(9));
+    function squaredNumDivisibleByThree(x) {
+        return (x * x) % 3 === 0;
+    }
+
+    console.log(squaredNumDivisibleByThree(9));
 
     //Warm-up for 2/5
-            function isString(x){
-                return (typeof x === "string");
-            }
-            console.log(isString(8)); //false
+    function isString(x) {
+        return (typeof x === "string");
+    }
+
+    console.log(isString(8)); //false
 
     //Warm-up for 2/6
     //Warm-up for 2/7
 
-    </script>
-    </body>
+    //TODO: Write a function that accepts a string that is a traffic light color as an input. When this function is called, it should return a message informing the user what to do when approaching that color light at an intersection.
+
+    function lightDirections(x) {
+        if (x === "red") {
+            return ("STAHP")
+        } else if (x === "green") {
+            return ("GOOOOO")
+        } else if (x === "yellow") {
+            return ("slow down, speed up, whatever")
+        } else {
+            return ("Are you even at a light?  Are you even driving?")
+        }
+    }
+
+    console.log(lightDirections("red"));
+
+    //TODO: Write a switch statement that evaluates weather as the condition. Check for "rainy", "sunny", "snow", and a default case
+
+    function weAther(x) {
+        var thisBeTheWeather;
+        switch (x) {
+            case "rainy":
+                thisBeTheWeather = "It's raining";
+                break;
+            case "sunny":
+                thisBeTheWeather = "It's sunny";
+                break;
+            case "snow":
+                thisBeTheWeather = "It's snowing";
+                break;
+            default:
+                thisBeTheWeather = "This is the default";
+                break;
+        }
+        return thisBeTheWeather;
+    }
+
+    console.log(weAther("sunny"));
+
+
+    //TODO: Rewrite the intersection function from earlier as a switch statement.
+
+</script>
+</body>
 </html>
