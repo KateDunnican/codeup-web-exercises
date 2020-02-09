@@ -41,9 +41,64 @@
 </nav>
 <!--Nav Bar for < MD-->
 
+<!--NAV bar START-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#nav-about-me">About Me<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#nav-education">Education</a>
+            <a class="nav-item nav-link" href="#nav-work-experience">Work Experience</a>
+            <a class="nav-item nav-link" href="#nav-languages">Languages</a>
+            <a class="nav-item nav-link" href="#nav-projects">Projects</a>
+            <a class="nav-item nav-link" href="#nav-contact-me">Contact Me</a>
+        </div>
+    </div>
+</nav>
+<!--NAV bar END-->
+
 <!--JS-->
 
 <!--JS-->
+
+<script>
+    // Define a function named isString that takes in any input and returns true if the input provided is a string.
+
+    function isString (x) {
+        return (typeof x === "string");
+    }
+
+    //Define a function named isOdd that takes in a single input. If the input is an odd number or a string containing an odd number, return true. Any other input should return false.
+
+    function isOdd (x){
+        return (parseInt(x) % 2 !== 0);
+    }
+
+    // notNotNot(1, true) ➞ false
+    // // Not true
+    // notNotNot(2, false) ➞ false
+    // // Not not false
+    // notNotNot(6, true) ➞ true
+    // // Not not not not not not true
+
+    function notNotNot (x , y) {
+        var returnState;
+        if (x % 2 === 0) {
+            returnState = y;
+        }
+        if (x % 2 !== 0) {
+            returnState = !y;
+        }
+        return returnState;
+    }
+
+</script>
+
+
 
 
 </body>
