@@ -23,12 +23,17 @@ console.log("Hey gurl hey from for_loops.js");
 //     }
 // }
 
-for (var x = 1; x < 10; ++x) {
-    var TheNum = "";
-    for (var y = 1; y <= x; ++y) {
-        TheNum += x;
-    }
-    console.log(TheNum);
-}
+// for (var x = 1; x < 10; ++x) {
+//     var TheNum = "";
+//     for (var y = 1; y <= x; ++y) {
+//         TheNum += x;
+//     }
+//     console.log(TheNum);
+// }
+
+// for (var x = 100; x > 0; x-=5) {
+//     console.log(x);
+// }
+
 
 
