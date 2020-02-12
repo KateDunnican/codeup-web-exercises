@@ -49,35 +49,6 @@ else {
     alert("Well fine then")
 }
 
-//function version:
-
-function isItNum(x) {
-   return !isNaN(x);
-}
-function isItEven(x) {
-    return (x%2 === 0);
-}
-function plus100(x) {
-    return ("Your number + 100 = " + (x + 100));
-}
-function isNeg(x) {
-    return (x < 0);
-}
-function mainFunc(x) {
-    //call all functions
-    if (yasNum) {
-        var theNUM = prompt("Gimmie dat der number");
-        if () {};
-        isItNum();
-        isItEven();
-        plus100();
-        isNeg();
-    }
-}
-var yasNum = confirm("You give me number, yas?");
-mainFunc(yasNum);
-
-
 
 /**
  * TODO:
