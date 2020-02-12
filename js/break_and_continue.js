@@ -10,6 +10,8 @@ while ((x % 2 === 0) || (isNaN(x)));
 
 console.log("Number to skip: " + x);
 
+
+
 for (var y = 1; y <50; y+=2) {
     if (x == y) {
         console.log("SKIPPED " + x + "!");

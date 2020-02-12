@@ -13,7 +13,7 @@ console.log("Hey gurl hey from for_loops.js");
 
 // for (var x = 1; x <= 10; ++x) {
 //
-//     var y = Math.floor(Math.random() * 20) + 180;
+//     var y = Math.floor(Math.random() * 180) + 20;
 //
 //     if (y % 2 === 0){
 //         console.log((x + " is odd"));
@@ -23,6 +23,7 @@ console.log("Hey gurl hey from for_loops.js");
 //     }
 // }
 
+
 // for (var x = 1; x < 10; ++x) {
 //     var TheNum = "";
 //     for (var y = 1; y <= x; ++y) {
@@ -30,6 +31,11 @@ console.log("Hey gurl hey from for_loops.js");
 //     }
 //     console.log(TheNum);
 // }
+//OR
+// for (var x = 1; x <= 10; ++x) {
+// console.log(x.toString().repeat(x));
+// }
+
 
 // for (var x = 100; x > 0; x-=5) {
 //     console.log(x);
