@@ -20,6 +20,8 @@
     // Quite the collection, if a bit incomplete. Where's cheddar?! Let's add cheddar to the end of our array.
     // TODO Together: Add Cheddar to the end of the 'cheeses' array
 
+    cheeses.push("Cheddar");
+    console.log(cheeses);
 
     // TODO Together: Write a function to log each of the cheeses, using forEach
 
