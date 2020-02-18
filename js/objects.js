@@ -31,11 +31,10 @@
      */
 
     person.sayHello = function () {
-        return "Hello from " + this.firstName + this.lastName + "!"
+        return "Hello from " + this.firstName + " " + this.lastName + "!"
     };
 
-        // person.sayHello = "Hello, Kate McKinney";
-        console.log(person.sayHello(person.firstName + " " + person.lastName));
+        console.log(person.sayHello());
 
 
     /** TODO:
@@ -118,6 +117,7 @@
      *      ...
      */
 
+// \n = start on new line
         books.forEach(function (x, i) {
             console.log("Book #" + (i + 1) + "\nTitle: " + x.title + "\nAuthor: " + x.author.firstName, x.author.lastName);
         });

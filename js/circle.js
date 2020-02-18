@@ -19,7 +19,7 @@
             // Otherwise, output the complete value
 
             if (doRounding === true) {
-                console.log("When r = " + this.radius + ", Area = " +                 Math.round(this.getArea()));
+                console.log("When r = " + this.radius + ", Area = " + Math.round(this.getArea()));
             }
             else{
                 return console.log("When r = " + this.radius + ", Area = " + this.getArea());
