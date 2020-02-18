@@ -67,7 +67,7 @@
             });
         }
 
-    console.log(discountChecker(shoppers));
+ discountChecker(shoppers);
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
