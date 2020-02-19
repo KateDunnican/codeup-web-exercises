@@ -24,28 +24,67 @@
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
+<button id="btn1">1</button>
+<button id="btn2">2</button>
+<button id="btn3">3</button>
+<button id="btn4">4</button>
 
 <script>
     (function() {
         "use strict";
+
         // TODO: Uncomment next line and get the main header element by id
                 var mainHeader = document.getElementById("main-header");
 
         // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-                mainHeader.innerHTML = "Javascript is Cool!";
+        //         mainHeader.innerHTML = "Javascript is Cool!";
+                    //could also use innerText
 
         // TODO: Uncomment the next line and get the sub header element by id
                 var subHeader = document.getElementById("sub-header");
 
         // TODO: Set the text color of subHeader to blue
-                subHeader.style.color = "blue";
+        //         subHeader.style.color = "blue";
 
         // TODO: Uncomment the next line and get all list items
                 var listItems = document.getElementsByTagName("li");
 
         // TODO: Set text color on every other list item to grey
         // TODO: Set text color of li with dbid = 1 to blue
-                var dbId = listItems[0].getAttribute("data-dbid");
+        //         var dbId = listItems[0].getAttribute("data-dbid");
+        //         for (var y = 0; y < listItems.length; y+=2){
+        //             if (listItems[y].getAttribute("data-dbid") === "1") {
+        //                 listItems[y].style.color = "blue";
+        //             }
+        //             else {
+        //                 listItems[y].style.color = "grey";
+        //             }
+        //             //OR else if (y % 2 === 0) {turn grey}
+        //         }
+
+        // TODO: Uncomment the next line and get all elements with class name sub-paragraph
+                var subParagraphs = document.getElementsByClassName("sub-paragraph");
+
+        // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
+        //         subParagraphs[0].innerHTML = "Mission Accomplished!";
+
+
+//-------------------BIG COMMENT TO DIVIDE EXERCISE ONE AND EXERCISE TWO-----------------
+
+
+        //TODO: Add 4 buttons to the page. Attach click event listeners to each of the buttons and have the handlers perform the modifications that were automatically taking place. For example, the first button should set inner html of mainHeader to "JavaScript is Cool".
+        function funk1 (x) {
+            mainHeader.innerHTML = "Javascript is Cool!";
+        }
+        document.getElementById("btn1").addEventListener("click", funk1);
+
+        function funk2 (x) {
+            subHeader.style.color = "blue";
+        }
+        document.getElementById("btn2").addEventListener("click", funk2);
+
+        function funk3 (x) {
+            var dbId = listItems[0].getAttribute("data-dbid");
                 for (var y = 0; y < listItems.length; y+=2){
                     if (listItems[y].getAttribute("data-dbid") === "1") {
                         listItems[y].style.color = "blue";
@@ -53,13 +92,16 @@
                     else {
                         listItems[y].style.color = "grey";
                     }
+                    //OR else if (y % 2 === 0) {turn grey}
                 }
+        }
+        document.getElementById("btn3").addEventListener("click", funk3);
 
-        // TODO: Uncomment the next line and get all elements with class name sub-paragraph
-                var subParagraphs = document.getElementsByClassName("sub-paragraph");
+        function funk4 (x) {
+            subParagraphs[0].innerHTML = "Mission Accomplished!";
+        }
+        document.getElementById("btn4").addEventListener("click", funk4);
 
-        // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-                subParagraphs[0].innerHTML = "Mission Accomplished!"
     })();
 </script>
 </body>
