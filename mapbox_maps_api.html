@@ -64,19 +64,22 @@ var ThreeFavs = [
         name: "Tacos Chagos",
         address: "11827 Perrin Beitel Rd, San Antonio, TX 78217",
         rating: "4.5 stars",
-        expensive: "Super cheap"
+        expensive: "Super cheap",
+        bestThing: "Best dish: Tacos De Alambre"
     },
     {
         name: "Food Hall at The Pearl",
         address: "312 Pearl Parkway, Building 6, San Antonio, TX 78215",
         rating: "4.5 stars",
-        expensive: "Outrageously pricey"
+        expensive: "Outrageously pricey",
+        bestThing: "Best dish: Fletcher's Dog"
     },
     {
         name: "Suck It the Restaurant",
         address: "7220 Louis Pasteur Dr #125, San Antonio, TX 78229",
         rating: "4.4 stars",
-        expensive: "Reasonably priced"
+        expensive: "Reasonably priced",
+        bestThing: "Best dish: Round Eye Beef Pho"
     }
 ];
 
@@ -84,7 +87,7 @@ ThreeFavs.forEach(function (x) {
     geocode(x.address, mapboxToken).then(function (result){
         var popup = new mapboxgl.Popup()
             .setLngLat(result)
-            .setHTML(x.name + "<br>" + x.rating + "<br>" + x.expensive)
+            .setHTML(x.name + "<br>" + x.expensive + "<br>" + x.bestThing + "<br>" + x.rating)
             .addTo(map);
         new mapboxgl.Marker(markerOptions)
             .setLngLat(result)
