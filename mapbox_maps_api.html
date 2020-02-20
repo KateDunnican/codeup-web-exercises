@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Mapbox Map</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 55%;
+            height: 700px;
+            margin-left: 22.5%;
+        }
+
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+
+
+
+
+
+<body>
+
+<h1>My Favorite Places to Eat</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<!-- Mapbox JS -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+<!-- Custom JS -->
+<script>
+// The map itself ------------------------------------------
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: "mapbox://styles/mapbox/satellite-streets-v11",
+        zoom: 10,
+        center: [-98.4916, 29.4252]
+    });
+
+// Marker appearance preferences ------------------------------------
+    var markerOptions = {
+        //color of marker
+        color: "rgb(58, 137, 148)",
+        //made marker draggable
+        draggable: false,
+    };
+
+// The individual markers ------------------------------------------
+var ThreeFavs = [
+    {
+        name: "Tacos Chagos",
+        address: "11827 Perrin Beitel Rd, San Antonio, TX 78217",
+        rating: "4.5 stars",
+        expensive: "Super cheap"
+    },
+    {
+        name: "Food Hall at The Pearl",
+        address: "312 Pearl Parkway, Building 6, San Antonio, TX 78215",
+        rating: "4.5 stars",
+        expensive: "Outrageously pricey"
+    },
+    {
+        name: "Suck It the Restaurant",
+        address: "7220 Louis Pasteur Dr #125, San Antonio, TX 78229",
+        rating: "4.4 stars",
+        expensive: "Reasonably priced"
+    }
+];
+
+ThreeFavs.forEach(function (x) {
+    geocode(x.address, mapboxToken).then(function (result){
+        var popup = new mapboxgl.Popup()
+            .setLngLat(result)
+            .setHTML(x.name + "<br>" + x.rating + "<br>" + x.expensive)
+            .addTo(map);
+        new mapboxgl.Marker(markerOptions)
+            .setLngLat(result)
+            .setPopup(popup)
+            .addTo(map);
+    })
+});
+
+</script>
+</body>
+</html>
