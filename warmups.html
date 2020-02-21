@@ -11,7 +11,7 @@
         return "Hello World!";
     }
 
-    console.log(helloWorld());
+    // console.log(helloWorld());
 
     //    ".log, tab" will wrap highlighted text into a console log.
 
@@ -20,35 +20,35 @@
     }
 
     /*test*/
-    console.log(quotient(36, 6));
+    // console.log(quotient(36, 6));
 
     /*Warmup for 1/21/19*/
     function wassup(x) {
         return "Hello " + x + "!";
     }
 
-    console.log(wassup("Karen"));
+    // console.log(wassup("Karen"));
 
     // Warm-up for 1/22
     function calculateRectangleArea(x, y) {
         return x * y;
     }
 
-    console.log(calculateRectangleArea(6, 5));
+    // console.log(calculateRectangleArea(6, 5));
 
     //Warm-up for 1/23
     function arrayLength(x) {
         return x.length
     }
 
-    console.log(arrayLength(['cat', 'dog', 'mouse']));
+    // console.log(arrayLength(['cat', 'dog', 'mouse']));
 
     //Warm-up for 1/24
     function return7() {
         return 7;
     }
 
-    console.log(return7());
+    // console.log(return7());
 
     //    Warm-up for 1/27
     // get supplies
@@ -78,28 +78,28 @@
         return x[0];
     }
 
-    console.log(firstItem(["dog", "cat", "mouse"]));
+    // console.log(firstItem(["dog", "cat", "mouse"]));
 
     //Warm-up for 1/29
     function determineType(x) {
         return typeof (x);
     }
 
-    console.log(determineType("Hello"));
+    // console.log(determineType("Hello"));
 
     //Warm-up for 2/4
     function squaredNumDivisibleByThree(x) {
         return (x * x) % 3 === 0;
     }
 
-    console.log(squaredNumDivisibleByThree(9));
+    // console.log(squaredNumDivisibleByThree(9));
 
     //Warm-up for 2/5
     function isString(x) {
         return (typeof x === "string");
     }
 
-    console.log(isString(8)); //false
+    // console.log(isString(8)); //false
 
     //Warm-up for 2/6
     //Warm-up for 2/7
@@ -118,7 +118,7 @@
         }
     }
 
-    console.log(lightDirections("red"));
+    // console.log(lightDirections("red"));
 
     //TODO: Write a switch statement that evaluates weather as the condition. Check for "rainy", "sunny", "snow", and a default case
 
@@ -141,7 +141,7 @@
         return thisBeTheWeather;
     }
 
-    console.log(weAther("sunny"));
+    // console.log(weAther("sunny"));
 
 
     //Warm-up for 2/20
@@ -231,8 +231,25 @@
         return GoldDeer;
     }
 
-    console.log(DeerLoop(reindeerList));
+    // console.log(DeerLoop(reindeerList));
 
+
+// Warm Up 2/21
+    // Write a function that returns a message that says hello to someone by accessing the name property of a passed object. If the passed argument's name property is anything but a string, or the argument is not an object, return "Hello, my dudes!"
+
+    function helloToObject (x) {
+        if (typeof x.name === "string") {
+            return ("Hello, " + x.name + "!")
+        }
+        else {
+            return "Hello, my dudes!"
+        }
+    }
+    //
+    // console.log(helloToObject({name: "Otis"}));
+    // console.log(helloToObject({name: {firstName: "Milo", lastName: "Chatran"}}));
+    // console.log(helloToObject(7));
+    // console.log(helloToObject([1, 2, 3]));
 
 </script>
 </body>
