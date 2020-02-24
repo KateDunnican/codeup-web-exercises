@@ -251,6 +251,66 @@
     // console.log(helloToObject(7));
     // console.log(helloToObject([1, 2, 3]));
 
+
+//Write a function named remove3s that accepts an array of numbers and returns an array with all of the same numbers except for 3
+    var array1 = [1, 2, 3, 4, 5];
+    var array2 = [5, 6, 7, 8];
+    var array3 = [1, 2, 3, 3, 4];
+
+    function remove3s(x) {
+        var bucket = [];
+        x.forEach(function (number) {
+            if (number !== 3) {
+                bucket.push(number)
+            }
+        });
+    return bucket;
+    }
+
+    // console.log(remove3s(array1));
+    // console.log(remove3s(array2));
+    // console.log(remove3s(array3));
+
+    // Create a function that takes a string and returns the word count. The string will be a sentence.
+    stringArray = "Yo mama so fat";
+
+    function wordCount (x) {
+       return x.split(" ").length;
+    }
+
+    // console.log(wordCount(stringArray));
+
+//Combine the arrays into arrays that list a person and a trait together as an object.
+
+    var people = [
+        "Jeff",
+        "Bryce",
+        "Kate",
+        "Jasmine"
+    ];
+    var traits = [
+        "Awesome and funny",
+        "Homeboy",
+        "Thunder-cunt",
+        "Fabulous"
+    ];
+
+    function PairShit(x,y) {
+        var NewArray = [];
+        for (var z = 0; z < x.length && y.length; ++z) {
+            NewArray.push({person: x[z], trait: y[z]})
+        }
+        return NewArray;
+    }
+
+    // console.log(PairShit(people, traits));
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
