@@ -252,6 +252,279 @@
 
 <!-- divide -->
 
+    // Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function. For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.
+
+    function ProblemOne(x) {
+        var answer = 0;
+        var returnThis;
+        // For positives...
+        if (x < 0) {
+            x = (x * -1);
+            for (var y = 1; y <= x; y+=1) {
+                answer += y;
+            }
+            returnThis = (answer * -1);
+        }
+        // And for negatives...
+        else {
+            for (var y = 1; y <= x; y+=1) {
+                answer += y;
+            }
+            returnThis = answer;
+        }
+        return returnThis;
+    }
+
+    // console.log(ProblemOne(5)); //Should be: 15
+    // console.log(ProblemOne(3)); //Should be: 6
+    // console.log(ProblemOne(-3)); //Should be: -6
+    // console.log(ProblemOne(-5)); //Should be: -15
+
+<!-- divide -->
+
+    // Given a number, return a string of the word "Boom", which varies in the following ways:
+    //     The string should include n number of "o"s, unless n is below 2 (in that case, return "boom").
+    // If n is evenly divisible by 2, add an exclamation mark to the end.
+    //     If n is evenly divisible by 5, return the string in ALL CAPS.
+    //     If n is evenly divisible by both 2 and 5, return the string in ALL CAPS and add an exclamation mark to the end.
+
+    function DaBoom(x) {
+        var Boom;
+        if (x > 2) {
+            if (x % 10 === 0) {
+                Boom = ("B" + "o".repeat(x) + "m" + "!").toUpperCase();
+            }
+            else if (x % 2 === 0) {
+                Boom = ("B" + "o".repeat(x) + "m" + "!");
+            }
+            else if (x % 5 === 0) {
+                Boom = ("B" + "o".repeat(x) + "m").toUpperCase();
+            }
+            else {
+                Boom = "B" + "o".repeat(x) + "m"
+            }
+        }
+        else{
+            Boom = "Boom";
+        }
+        return Boom;
+    }
+
+    // console.log(DaBoom(1));
+    // console.log(DaBoom(3));
+    // console.log(DaBoom(4));
+    // console.log(DaBoom(5));
+    // console.log(DaBoom(10));
+
+<!-- divide -->
+
+    // A game of table tennis almost always sounds like Ping! followed by Pong! Therefore, you know that Player 2 has won if you hear Pong! as the last sound.
+    // Given an array of Ping!, create a function that inserts Pong! in between each element. Also:
+    // If win equals true, end the list with Pong!.
+    // If win equals false, end with Ping! instead.
+
+    firstArray = ["Ping!"];
+    secondArray = ["Ping!", "Ping!"];
+    thirdArray = ["Ping!", "Ping!", "Ping!"];
+
+    // y = true means Pong wins, y = false means Ping wins
+
+    function PingPong(x, y) {
+        var Result;
+        if (y === true) {
+            x = (x.join(",Pong!,").split(","));
+            x.push("Pong!");
+            Result = x;
+        }
+        else {
+            x = (x.join(",Pong!,").split(","));
+            Result = x;
+        }
+        return Result;
+    }
+
+    // console.log(PingPong(firstArray, true));
+    // console.log(PingPong(firstArray, false));
+    // console.log(PingPong(secondArray, true));
+    // console.log(PingPong(secondArray, false));
+    // console.log(PingPong(thirdArray, true));
+    // console.log(PingPong(thirdArray, false));
+
+<!-- divide -->
+
+    // ## Practice Problems
+    // TODO: 1.  Write a function, `filterNumbers()` that takes in an array of mixed data types and returns an array of only the numbers type in ascending order.
+
+
+    function filterNumbers(x) {
+        function TheFilter(x) {
+            return typeof x === "number";
+        }
+        return x.filter(TheFilter).sort(function(a, b){return a-b});
+    }
+
+    // console.log(filterNumbers(["fred", true, 5, 3])); //[3, 5]
+
+<!-- divide -->
+
+    // TODO: 2. Write a function, `getOlder()` that takes in array of dog objects and increases the value of the age properties by 1.
+
+    //Example Input:
+    var exampleInput = [
+        {
+            name: "Chompers",
+            breed: "Pug",
+            age: 7
+        },
+        {
+            name: "Freddy",
+            breed: "Lab",
+            age: 4
+        },
+        {
+            name: "Mr. Pig",
+            breed: "Mastiff",
+            age: 10
+        }
+    ];
+
+
+    function getOlder (x) {
+        for (var y = 0; y < x.length; ++y){
+            ++ x[y].age;
+            x[y].age = x[y].age + 1;
+            x[y].age += 1;
+        }
+        return x;
+    }
+
+    // console.log(getOlder(exampleInput));
+
+<!-- divide -->
+
+    // TODO: 3. Write a function, `washCars()` that takes in a array of car objects and sets the boolean properties of isDirty to false
+
+    // Example input
+    var ExampleInput2 = [
+        {
+            make: 'Volvo',
+            color: 'red',
+            year: 1996,
+            isDirty: true
+        },
+        {
+            make: 'Toyota',
+            color: 'black',
+            year: 2004,
+            isDirty: false
+        },
+        {
+            make: 'Ford',
+            color: 'white',
+            year: 2007,
+            isDirty: true
+        }
+    ];
+
+    function washCars(x) {
+        for (var y = 0; y < x.length; ++y){
+            x[y].isDirty = false;
+        }
+        return x;
+    }
+
+    // console.log(washCars(ExampleInput2));
+
+<!-- divide -->
+
+    // TODO: 4. Write a function, `adminList()` that takes in an array of user objects and returns a count of all admins based on the isAdmin property. Refactor to return an array of admin-only user emails. Refactor again to return an array of user objects that are admins.
+
+
+    //Example Input:
+    var ExampleInput3 = [
+        {
+            isAdmin: true,
+            email: 'user1@email.com'
+        },
+        {
+            isAdmin: true,
+            email: 'user2@email.com'
+        },
+        {
+            isAdmin: false,
+            email: 'user3@email.com'
+        }
+    ];
+
+    function adminList (x) {
+        var allAdminCount = 0;
+        for (var y = 0; y < x.length; ++y) {
+            if (x[y].isAdmin === true) {
+                allAdminCount += 1;
+            }
+        }
+        return allAdminCount;
+    }
+
+    // console.log(adminList(ExampleInput3));
+
+    function adminList2(x) {
+        var emails = [];
+        for (var y = 0; y < x.length; ++y) {
+            if (x[y].isAdmin === true) {
+                emails.push(x[y].email);
+            }
+        }
+        return emails;
+    }
+
+    // console.log(adminList2(ExampleInput3));
+
+    function adminList3(x) {
+        var emailnAdmin = [];
+        for (var y = 0; y < x.length; ++y) {
+            if (x[y].isAdmin === true) {
+                emailnAdmin.push({isAdmin: x[y].isAdmin, email: x[y].email});
+            }
+        }
+        return emailnAdmin;
+    }
+
+    // console.log(adminList3(ExampleInput3));
+
+<!-- divide -->
+
+    // TODO: 5. Create a function, `makeSandwichObjects()` that takes in two array of strings, breads and fillings and returns an array of sandwichObjects that contain properties for bread and filling and values correspond to the same order of the two passed in arrays. Assume the two array inputs are the same length.
+
+    //     Example Inputs:
+
+    var breads  = [
+        "white",
+        "wheat",
+        "rhy",
+        "white"
+    ];
+
+    var fillings = [
+        "pb&j",
+        "ham",
+        "cheese steak",
+        "tuna"
+    ];
+
+    function makeSandwichObjects(x, z) {
+        var theSammiches = [];
+        for (var y = 0; (y < x.length && y < z.length); ++y) {
+            theSammiches.push({bread: x[y], filling: z[y]});
+        }
+        return theSammiches;
+    }
+
+    // console.log(makeSandwichObjects(breads, fillings));
+
+<!-- divide -->
+
+
 
 
 </script>
