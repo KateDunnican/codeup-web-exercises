@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Exercises</title>
+</head>
+
+<body>
+
+<h1 class="Codeup">Hello There</h1>
+<p  class="Codeup">This is my first jQuery exercise</p>
+<div class="Codeup">This is a div</div>
+<ul class="list">
+    <li id="li1" class="list">And this</li>
+    <li id="li2" class="list">is a</li>
+    <li id="li3" class="list">list!</li>
+</ul>
+
+
+
+
+
+
+
+
+<!--jQuery Source Code-->
+<script src="js/jquery-2.2.4.js"></script>
+
+<!--Using said source code-->
+<script type="text/javascript">
+    "use strict";
+
+    // window.onload = function() {
+    //     alert( 'The page has finished loading!' );
+    // }
+
+    // var content = $("#li1, #li2, #li3").html(); //why doesn't this alert them all?
+    // alert(content);
+
+    $(".Codeup").css("border", "1px solid red");
+
+    $("li").css("font-size", "20px");
+    $("h1, p, li").css("background-color", "yellow");
+    // var content2 = $("h1").html();
+    // alert(content2);
+
+</script>
+</body>
+</html>
