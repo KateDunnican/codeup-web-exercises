@@ -7,8 +7,8 @@
 
 <body>
 
-<h1 class="Codeup">Hello There</h1>
-<p  class="Codeup">This is my first jQuery exercise</p>
+<h1 class="Codeup">This is an h1</h1>
+<p  class="Codeup">This is a p</p>
 <div class="Codeup">This is a div</div>
 <ul class="list">
     <li id="li1" class="list">And this</li>
@@ -30,19 +30,41 @@
 <script type="text/javascript">
     "use strict";
 
+    <!-- 2/26 work -->
     // window.onload = function() {
     //     alert( 'The page has finished loading!' );
     // }
 
     // var content = $("#li1, #li2, #li3").html(); //why doesn't this alert them all?
     // alert(content);
-
-    $(".Codeup").css("border", "1px solid red");
-
-    $("li").css("font-size", "20px");
-    $("h1, p, li").css("background-color", "yellow");
+    //
+    // $(".Codeup").css("border", "1px solid red");
+    //
+    // $("li").css("font-size", "20px");
+    // $("h1, p, li").css("background-color", "yellow");
     // var content2 = $("h1").html();
     // alert(content2);
+
+    <!-- 2/27 work -->
+    //Turns the h1 background color black on a click
+    $("h1").click(function() {
+        $(this).css("background-color", "black")
+    });
+
+    //Change p font size to 18px when clicked
+    $("p").click(function () {
+        $(this).css("font-size", "18px")
+    });
+
+    //Changes all li text to red when hovered on
+    $("li").hover(
+        function () {
+            $(this).css("color", "red");
+    },
+        function () {
+            $(this).css("color", "black");
+    });
+
 
 </script>
 </body>
