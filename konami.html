@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+
+
+<body>
+<style>
+    #bigdiv{
+        display: flex;
+        justify-content: center;
+    }
+    h1{
+        display: flex;
+    }
+</style>
+
+
+
+
+<h1>Konami Code</h1>
+<br>
+<div id="bigdiv">
+    <div id="hiddenDiv"></div>
+</div>
+
+
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+    $(document).keyup(function(event){
+        console.log(event.keyCode);
+    });
+
+    //turns h1 red when down key hit
+    $(document).keyup(function (x) {
+        <!-- T -->
+        if (x.keyCode === 84){
+            $("h1").css("color", "teal");
+        }
+        <!-- P -->
+        if (x.keyCode === 80){
+            $("body").css("background-color", "purple");
+        }
+        <!-- C -->
+        if (x.keyCode === 67){
+            $("h1").css("justify-content", "center");
+        }
+        <!-- R -->
+        if (x.keyCode === 82){
+            $("h1").css("color", "black").css("justify-content", "left");
+            $("body").css("background-color", "white");
+            $("#hiddenDiv").html("");
+        }
+    });
+
+    var enteredCode = [];
+    var konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+    var JimboCode = [74, 73, 77, 66, 79];
+    var JokeCat = [74, 79, 75, 69];
+
+    $(document).keyup(function(event){
+        enteredCode.push(event.keyCode);
+        console.log(enteredCode);
+        <!-- Konami Code -->
+            if (enteredCode.join(",").includes(konamiCode.join(","))) {
+                alert("You have added 30 lives!");
+                $("#hiddenDiv").html("<img src='images/fireworks.gif'>");
+                enteredCode = [];
+            }
+        <!-- Jimbo -->
+            if (enteredCode.join(",").includes(JimboCode.join(","))) {
+                alert("say hi to Jimbo!");
+                $("#hiddenDiv").html("<img src='images/Jimbo.JPG'>");
+                enteredCode = [];
+            }
+        <!-- joke -->
+            if (enteredCode.join(",").includes(JokeCat.join(","))) {
+                $("#hiddenDiv").html("<img src='images/JokeCat.JPG'>");
+                enteredCode = [];
+            }
+    });
+</script>
+</body>
+</html>

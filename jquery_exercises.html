@@ -52,7 +52,7 @@
     });
 
     //Change p font size to 18px when clicked
-    $("p").click(function () {
+    $("p").dblclick(function () {
         $(this).css("font-size", "18px")
     });
 
@@ -61,11 +61,12 @@
         // this one for mouseenter
         function () {
             $(this).css("color", "red");
-    },
+        },
         //this one for mouseleave
         function () {
             $(this).css("color", "black");
-    });
+        }
+    );
 
 
 </script>
