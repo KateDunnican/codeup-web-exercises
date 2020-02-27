@@ -58,9 +58,11 @@
 
     //Changes all li text to red when hovered on
     $("li").hover(
+        // this one for mouseenter
         function () {
             $(this).css("color", "red");
     },
+        //this one for mouseleave
         function () {
             $(this).css("color", "black");
     });
