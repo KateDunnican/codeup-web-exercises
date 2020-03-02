@@ -12,6 +12,24 @@
             margin-bottom: 10px;
             color: green;
         }
+        .BigDiv{
+            display: flex;
+            justify-content: space-between;
+        }
+        .pictures{
+            border: 5px solid black;
+            margin: 5px;
+            height: 200px;
+            width: 200px;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+        }
+        .picbutts{
+            width: 31%;
+        }
     </style>
     <!--  My JS/jQ link  -->
     <script src="js/jquery-2.2.4.js"></script>
@@ -80,6 +98,19 @@
 
 <button id="The2ndButton">Show/hide the answers!</button>
 
+<!--BONUS WORK-->
+<div class="BigDiv">
+    <div id="pic1" class="pictures"><img src="images/Jimbo.JPG" alt="Jimbo"></div>
+    <div id="pic2" class="pictures"><img src="images/JokeCat.JPG" alt="Joking Cat"></div>
+    <div id="pic3" class="pictures"><img src="images/WrinkleCat.jpg" alt="Wrinkle Cat"></div>
+</div>
+<div class="BigDiv">
+    <button id="pic1butt" class="picbutts">SWAP!</button>
+    <button id="pic2butt" class="picbutts">SWAP!</button>
+    <button id="pic3butt" class="picbutts">SWAP!</button>
+</div>
+
+
 <!--My JS/jQ-->
 <script>
     "use strict";
@@ -89,7 +120,40 @@
         });
 
         $("#The2ndButton").click(function () {
-            $("ul").children().last().css("background", "yellow");
+            return $("ul").each(function () {
+                return $(this).children().last().css("background", "yellow");
+            });
+        });
+
+        $("h3").click(function () {
+            return $(this).next().children().css("font-weight", "bold");
+        });
+
+        $("li").click(function () {
+            return $(this).parent().children().first().css("color", "blue");
+        });
+
+
+        $(".picbutts").click(function () {
+            var clickedButton = $(this).attr("id");
+            if (clickedButton === "pic1butt"){
+                // $("#pic1").html('<img src="images/JokeCat.JPG" alt="Joking Cat">');
+                // $("#pic2").html('<img src="images/WrinkleCat.jpg" alt="Wrinkle Cat">');
+                // return $("#pic3").html('<img src="images/Jimbo.JPG" alt="Jimbo">');
+                $("#pic1").html($("#pic2").children());
+                $("#pic2").html($("#pic3").children());
+                $("#pic3").html($("#pic1").children());
+            }
+            if (clickedButton === "pic2butt"){
+
+            }
+            if (clickedButton === "pic3butt"){
+
+            }
+
+            // '<img src="images/Jimbo.JPG" alt="Jimbo">'
+            // '<img src="images/JokeCat.JPG" alt="Joking Cat">'
+            // '<img src="images/WrinkleCat.jpg" alt="Wrinkle Cat">'
         });
 
 </script>
