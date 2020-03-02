@@ -13,6 +13,7 @@
             color: green;
         }
     </style>
+    <!--  My JS/jQ link  -->
     <script src="js/jquery-2.2.4.js"></script>
 </head>
 <body>
@@ -53,6 +54,32 @@
 
 <button id="TheButton">Show/hide the answers!</button>
 
+<h3>Big Bend</h3>
+<ul>
+    <li>Fact 1</li>
+    <li>Fact 2</li>
+    <li>Fact 3</li>
+    <li>Fact 4</li>
+</ul>
+
+<h3>Yellowstone</h3>
+<ul>
+    <li>Fact 1</li>
+    <li>Fact 2</li>
+    <li>Fact 3</li>
+    <li>Fact 4</li>
+</ul>
+
+<h3>Yo Mama's House</h3>
+<ul>
+    <li>Fact 1</li>
+    <li>Fact 2</li>
+    <li>Fact 3</li>
+    <li>Fact 4</li>
+</ul>
+
+<button id="The2ndButton">Show/hide the answers!</button>
+
 <!--My JS/jQ-->
 <script>
     "use strict";
@@ -61,6 +88,11 @@
             $("dd").toggleClass("invisible");
         });
 
+        $("#The2ndButton").click(function () {
+            $("ul").children().last().css("background", "yellow");
+        });
+
 </script>
+
 </body>
 </html>
