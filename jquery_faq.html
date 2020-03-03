@@ -37,10 +37,6 @@
 <body>
 
 <!--The important HTML-->
-<div>
-
-</div>
-
 <dl>
     <dt>How many are there?</dt>
     <dd class="invisible">62</dd>
@@ -114,51 +110,69 @@
 </div>
 
 
+<!-- jQ Events Lecture Exercise -->
+<hr>
+<div>
+    <h1>Would you like to sign up for our newsletter?</h1>
+    <span>x</span>
+</div>
+<h2>Faaaaade In</h2>
+
+
 <!--My JS/jQ-->
 <script>
     "use strict";
 
-        $("#TheButton").click(function () {
-            $("dd").toggleClass("invisible");
+    $("#TheButton").click(function () {
+        $("dd").toggleClass("invisible");
+    });
+
+    $("#The2ndButton").click(function () {
+        return $("ul").each(function () {
+            return $(this).children().last().css("background", "yellow");
         });
+    });
 
-        $("#The2ndButton").click(function () {
-            return $("ul").each(function () {
-                return $(this).children().last().css("background", "yellow");
-            });
-        });
+    // BOLDS TEXT WHEN PARENT H3 IS CLICKED
+    // $("h3").click(function () {
+    //     return $(this).next().children().css("font-weight", "bold");
+    // });
 
-        $("h3").click(function () {
-            return $(this).next().children().css("font-weight", "bold");
-        });
-
-        $("li").click(function () {
-            return $(this).parent().children().first().css("color", "blue");
-        });
+    $("li").click(function () {
+        return $(this).parent().children().first().css("color", "blue");
+    });
 
 
-        $(".picbutts").click(function () {
-            var clickedButton = $(this).attr("id");
-            if (clickedButton === "pic1butt"){
-                $("#pic1").html($("#pic2").children());
-                // $("#pic2").html($("#pic3").children());
-                // $("#pic3").html($("#pic1").children());
-            }
-            if (clickedButton === "pic2butt"){
+    $(".picbutts").click(function () {
+        var clickedButton = $(this).attr("id");
+        if (clickedButton === "pic1butt"){
+            $("#pic1").html($("#pic2").children());
+            // $("#pic2").html($("#pic3").children());
+            // $("#pic3").html($("#pic1").children());
+        }
+        if (clickedButton === "pic2butt"){
 
-            }
-            if (clickedButton === "pic3butt"){
+        }
+        if (clickedButton === "pic3butt"){
 
-            }
+        }
 
-            // '<img src="images/Jimbo.JPG" alt="Jimbo">'
-            // '<img src="images/JokeCat.JPG" alt="Joking Cat">'
-            // '<img src="images/WrinkleCat.jpg" alt="Wrinkle Cat">'
-        });
+        // '<img src="images/Jimbo.JPG" alt="Jimbo">'
+        // '<img src="images/JokeCat.JPG" alt="Joking Cat">'
+        // '<img src="images/WrinkleCat.jpg" alt="Wrinkle Cat">'
+    });
 
 
 <!-- jQ Events Lecture Exercise -->
+    $("span").click(function () {
+       return $(this).parent().hide();
+    });
 
+    $("h3").click(function () {
+       return $(this).next().children().toggle();
+    });
+
+    $("h2").fadeOut(8000);
 
 </script>
 
