@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>National Parks Exercise</title>
+    <title>jQuery FAQ</title>
     <!--  My CSS  -->
     <style>
         .invisible{
@@ -37,35 +37,38 @@
 <body>
 
 <!--The important HTML-->
+<div>
+
+</div>
+
 <dl>
-    <!-- Q1 -->
     <dt>How many are there?</dt>
     <dd class="invisible">62</dd>
-    <!-- Q2 -->
+
     <dt>Largest one?</dt>
     <dd class="invisible">Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres</dd>
-    <!-- Q3 -->
+
     <dt>Smallest one?</dt>
     <dd class="invisible">Thaddeus Kosciuszko National Memorial, PA, at 0.02 acres</dd>
-    <!-- Q4 -->
+
     <dt>Most popular?</dt>
     <dd class="invisible">Golden Gate National Recreation Area with 15 million visitors</dd>
-    <!-- Q5 -->
+
     <dt>How many people work for national parks?</dt>
     <dd class="invisible">Over 20,000</dd>
-    <!-- Q6 -->
+
     <dt>When was the first national park made?</dt>
     <dd class="invisible">Yellowstone was established March 1st 1872</dd>
-    <!-- Q7 -->
+
     <dt>How many are in Texas?</dt>
     <dd class="invisible">9</dd>
-    <!-- Q8 -->
+
     <dt>Which park is the most deadly?</dt>
     <dd class="invisible">Lake Mead National Recreation Area with 254 deaths in 10 years</dd>
-    <!-- Q9 -->
+
     <dt>What's the closest park to SA?</dt>
     <dd class="invisible">San Antonio Missions National Historical Park</dd>
-    <!-- Q10 -->
+
     <dt>Biggest park in TX?</dt>
     <dd class="invisible">Big Bend</dd>
 </dl>
@@ -137,12 +140,9 @@
         $(".picbutts").click(function () {
             var clickedButton = $(this).attr("id");
             if (clickedButton === "pic1butt"){
-                // $("#pic1").html('<img src="images/JokeCat.JPG" alt="Joking Cat">');
-                // $("#pic2").html('<img src="images/WrinkleCat.jpg" alt="Wrinkle Cat">');
-                // return $("#pic3").html('<img src="images/Jimbo.JPG" alt="Jimbo">');
                 $("#pic1").html($("#pic2").children());
-                $("#pic2").html($("#pic3").children());
-                $("#pic3").html($("#pic1").children());
+                // $("#pic2").html($("#pic3").children());
+                // $("#pic3").html($("#pic1").children());
             }
             if (clickedButton === "pic2butt"){
 
@@ -155,6 +155,10 @@
             // '<img src="images/JokeCat.JPG" alt="Joking Cat">'
             // '<img src="images/WrinkleCat.jpg" alt="Wrinkle Cat">'
         });
+
+
+<!-- jQ Events Lecture Exercise -->
+
 
 </script>
 
