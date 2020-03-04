@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--Bootstrap-->
+    <!--MY CSS-->
+</head>
+<body>
+<!--MY HTML-->
+<div class="container-fluid">
+    <!--Header-->
+    <div class="row">
+        <div class="col-md-12">
+            Kate's Weather Forecast
+        </div>
+    </div>
+    <!--Under Header-->
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+    <!--Daily weather display-->
+    <div class="row">
+        <!--Day 1-->
+        <div class="col-md-4">
+        </div>
+        <!--Day 2-->
+        <div class="col-md-4">
+        </div>
+        <!--Day 3-->
+        <div class="col-md-4">
+        </div>
+    </div>
+
+    <div class="row">
+        <!--The actual map-->
+        <div class="col-md-12">
+        </div>
+    </div>
+
+    <div class="row">
+        <!--Enter own location-->
+        <div class="col-md-12">
+        </div>
+    </div>
+</div>
+
+
+<!--MY JS/jQ-->
+<script src="js/jquery-2.2.4.js"></script>
+<script src="js/keys.js"></script>
+<script>
+    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/29.4241,-98.4936").done(function (data) {
+        console.log(data);
+        console.log(new Date(data.currently.time * 1000));
+    });
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
