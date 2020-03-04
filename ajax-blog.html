@@ -43,7 +43,7 @@
             border-right: black solid 2px;
         }
 
-        .postdivs {
+        .titleCats {
             display: flex;
             justify-content: space-between;
         }
@@ -126,18 +126,22 @@
             $.each(data, function (index, post) {
                 var content = "";
                 content += (
-                    "<div class='postdivs'>" +
+
+                    "<div class='row'>" +
+                    "<div class='col-md-12 titleCats'>" +
+                    "<span>" +
                     post.title +
-                    "<br>" +
-                    "(" +
-                    // "<br>" +
+                    "</span>" +
                     // "Categories: " +
                     post.categories +
-                    ")" +
-                    "<br>" +
+                    "</div>" +
+                    "</div>" +
+                    "<div class='row'>" +
+                    "<div class='col-md-12'>" +
                     post.date +
                     "<br>" +
                     post.content +
+                    "</div>" +
                     "</div>" +
                     "<br>"
                 );
