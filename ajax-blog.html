@@ -122,34 +122,33 @@
     (function () {
         "use strict";
 
-        $.ajax("data/blog.json").done(function (data) {
-            $.each(data, function (index, post) {
+        $.ajax("data/blog.json").done(function MakeBlogPosts(data) {
+            $.each(data, function (i, post) {
                 var content = "";
                 content += (
-
                     "<div class='row'>" +
                     "<div class='col-md-12 titleCats'>" +
                     "<span>" +
                     post.title +
                     "</span>" +
-                    // "Categories: " +
-                    post.categories +
+                    post.date +
                     "</div>" +
                     "</div>" +
                     "<div class='row'>" +
                     "<div class='col-md-12'>" +
-                    post.date +
+                    post.categories +
                     "<br>" +
                     post.content +
                     "</div>" +
                     "</div>" +
                     "<br>"
                 );
+
                 $("#posts").append(content);
             });
         });
 
-        $.ajax("data/blog.json").done(function (data) {
+        $.ajax("data/blog.json").done(function PostCategories(data) {
             $.each(data, function (index, post) {
                 var content = "";
                 content += (
