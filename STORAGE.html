@@ -6,7 +6,6 @@
 </head>
 
 
-
 <body>
 <!--<script src="js/STORAGE.js"></script>-->
 
@@ -70,13 +69,13 @@
 <script>
     // Define a function named isString that takes in any input and returns true if the input provided is a string.
 
-    function isString (x) {
+    function isString(x) {
         return (typeof x === "string");
     }
 
     //Define a function named isOdd that takes in a single input. If the input is an odd number or a string containing an odd number, return true. Any other input should return false.
 
-    function isOdd (x){
+    function isOdd(x) {
         return (parseInt(x) % 2 !== 0);
     }
 
@@ -87,7 +86,7 @@
     // notNotNot(6, true) ➞ true
     // // Not not not not not not true
 
-    function notNotNot (x , y) {
+    function notNotNot(x, y) {
         var returnState;
         if (x % 2 === 0) {
             returnState = y;
@@ -100,12 +99,11 @@
 
     //write a function that accepts two inputs (x, y). Return true if the sum of both numbers is less than 100, otherwise return false.
     function name(x, y) {
-        return ((x+y) < 100);
+        return ((x + y) < 100);
     }
 
 
-
-<!-------- JS Assessment 3 material -------->
+    <!-------- JS Assessment 3 material -------->
 
     // Loop through the following array of Reindeer objects and return an array of Reindeer objects that are "gold" reindeer
 
@@ -194,7 +192,7 @@
 
     // console.log(DeerLoop(reindeerList));
 
-<!-- divide -->
+    <!-- divide -->
 
     //Write a function named remove3s that accepts an array of numbers and returns an array with all of the same numbers except for 3
     var array1 = [1, 2, 3, 4, 5];
@@ -215,18 +213,18 @@
     // console.log(remove3s(array2));
     // console.log(remove3s(array3));
 
-<!-- divide -->
+    <!-- divide -->
 
     // Create a function that takes a string and returns the word count. The string will be a sentence.
     stringArray = "Yo mama so fat";
 
-    function wordCount (x) {
+    function wordCount(x) {
         return x.split(" ").length;
     }
 
     // console.log(wordCount(stringArray));
 
-<!-- divide -->
+    <!-- divide -->
 
     //Combine the arrays into arrays that list a person and a trait together as an object.
 
@@ -243,7 +241,7 @@
         "Fabulous"
     ];
 
-    function PairShit(x,y) {
+    function PairShit(x, y) {
         var NewArray = [];
         for (var z = 0; z < x.length && y.length; ++z) {
             NewArray.push({person: x[z], trait: y[z]})
@@ -253,7 +251,7 @@
 
     // console.log(PairShit(people, traits));
 
-<!-- divide -->
+    <!-- divide -->
 
     // Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function. For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.
 
@@ -263,14 +261,14 @@
         // For positives...
         if (x < 0) {
             x = (x * -1);
-            for (var y = 1; y <= x; y+=1) {
+            for (var y = 1; y <= x; y += 1) {
                 answer += y;
             }
             returnThis = (answer * -1);
         }
         // And for negatives...
         else {
-            for (var y = 1; y <= x; y+=1) {
+            for (var y = 1; y <= x; y += 1) {
                 answer += y;
             }
             returnThis = answer;
@@ -283,7 +281,7 @@
     // console.log(ProblemOne(-3)); //Should be: -6
     // console.log(ProblemOne(-5)); //Should be: -15
 
-<!-- divide -->
+    <!-- divide -->
 
     // Given a number, return a string of the word "Boom", which varies in the following ways:
     //     The string should include n number of "o"s, unless n is below 2 (in that case, return "boom").
@@ -296,18 +294,14 @@
         if (x > 2) {
             if (x % 10 === 0) {
                 Boom = ("B" + "o".repeat(x) + "m" + "!").toUpperCase();
-            }
-            else if (x % 2 === 0) {
+            } else if (x % 2 === 0) {
                 Boom = ("B" + "o".repeat(x) + "m" + "!");
-            }
-            else if (x % 5 === 0) {
+            } else if (x % 5 === 0) {
                 Boom = ("B" + "o".repeat(x) + "m").toUpperCase();
-            }
-            else {
+            } else {
                 Boom = "B" + "o".repeat(x) + "m"
             }
-        }
-        else{
+        } else {
             Boom = "Boom";
         }
         return Boom;
@@ -319,7 +313,7 @@
     // console.log(DaBoom(5));
     // console.log(DaBoom(10));
 
-<!-- divide -->
+    <!-- divide -->
 
     // A game of table tennis almost always sounds like Ping! followed by Pong! Therefore, you know that Player 2 has won if you hear Pong! as the last sound.
     // Given an array of Ping!, create a function that inserts Pong! in between each element. Also:
@@ -338,8 +332,7 @@
             x = (x.join(",Pong!,").split(","));
             x.push("Pong!");
             Result = x;
-        }
-        else {
+        } else {
             x = (x.join(",Pong!,").split(","));
             Result = x;
         }
@@ -353,7 +346,7 @@
     // console.log(PingPong(thirdArray, true));
     // console.log(PingPong(thirdArray, false));
 
-<!-- divide -->
+    <!-- divide -->
 
     // ## Practice Problems
     // TODO: 1.  Write a function, `filterNumbers()` that takes in an array of mixed data types and returns an array of only the numbers type in ascending order.
@@ -363,12 +356,15 @@
         function TheFilter(x) {
             return typeof x === "number";
         }
-        return x.filter(TheFilter).sort(function(a, b){return a-b});
+
+        return x.filter(TheFilter).sort(function (a, b) {
+            return a - b
+        });
     }
 
     // console.log(filterNumbers(["fred", true, 5, 3])); //[3, 5]
 
-<!-- divide -->
+    <!-- divide -->
 
     // TODO: 2. Write a function, `getOlder()` that takes in array of dog objects and increases the value of the age properties by 1.
 
@@ -392,9 +388,9 @@
     ];
 
 
-    function getOlder (x) {
-        for (var y = 0; y < x.length; ++y){
-            ++ x[y].age;
+    function getOlder(x) {
+        for (var y = 0; y < x.length; ++y) {
+            ++x[y].age;
             //OR
             x[y].age = x[y].age + 1;
             //OR
@@ -405,7 +401,7 @@
 
     // console.log(getOlder(exampleInput));
 
-<!-- divide -->
+    <!-- divide -->
 
     // TODO: 3. Write a function, `washCars()` that takes in a array of car objects and sets the boolean properties of isDirty to false
 
@@ -432,7 +428,7 @@
     ];
 
     function washCars(x) {
-        for (var y = 0; y < x.length; ++y){
+        for (var y = 0; y < x.length; ++y) {
             x[y].isDirty = false;
         }
         return x;
@@ -440,7 +436,7 @@
 
     // console.log(washCars(ExampleInput2));
 
-<!-- divide -->
+    <!-- divide -->
 
     // TODO: 4. Write a function, `adminList()` that takes in an array of user objects and returns a count of all admins based on the isAdmin property. Refactor to return an array of admin-only user emails. Refactor again to return an array of user objects that are admins.
 
@@ -459,7 +455,7 @@
         }
     ];
 
-    function adminList (x) {
+    function adminList(x) {
         var allAdminCount = 0;
         for (var y = 0; y < x.length; ++y) {
             if (x[y].isAdmin === true) {
@@ -495,13 +491,13 @@
 
     // console.log(adminList3(ExampleInput3));
 
-<!-- divide -->
+    <!-- divide -->
 
     // TODO: 5. Create a function, `makeSandwichObjects()` that takes in two array of strings, breads and fillings and returns an array of sandwichObjects that contain properties for bread and filling and values correspond to the same order of the two passed in arrays. Assume the two array inputs are the same length.
 
     //     Example Inputs:
 
-    var breads  = [
+    var breads = [
         "white",
         "wheat",
         "rhy",
@@ -525,13 +521,13 @@
 
     // console.log(makeSandwichObjects(breads, fillings));
 
-<!-- divide -->
+    <!-- divide -->
 
     // TODO Write a function named keepYellow that accepts an array of strings and returns an array with all the strings that are equal to "yellow"
 
-    function keepYellow (x){
+    function keepYellow(x) {
         var newArray = [];
-        x.forEach(function (ITEM){
+        x.forEach(function (ITEM) {
             if (ITEM === "yellow") {
                 newArray.push(ITEM)
             }
@@ -541,11 +537,11 @@
 
     // console.log(keepYellow(["yellow", "red", "blue", "yellow", "black", "brown", "yellow"]));
 
-<!-- divide -->
+    <!-- divide -->
 
     <!-- forEach loop format -->
     function nameofFunction(x) {
-        x.forEach(function (ITEM){
+        x.forEach(function (ITEM) {
             //do whatever you want done to each ITEM in x;
         });
         return x;
@@ -559,7 +555,22 @@
         return x;
     }
 
-<!-- divide -->
+    <!-- divide -->
+
+    <!-- Ajax/jQ version of forEach -->
+    $.ajax("url of your json file/API whatever").done(function (data) {
+        $.each(data, function (i, x) {
+            var content = "";
+            content += (
+                "<div>" +
+                x.title +
+                "</div>"
+                //or whatever
+            );
+            $("#where you want this info to show up").append(content);
+        });
+    });
+
 
 </script>
 </body>
