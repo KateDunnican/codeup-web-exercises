@@ -38,6 +38,10 @@
             margin-top: 50px;
         }
 
+        a {
+            color: black;
+        }
+
         #posts {
             border-left: black solid 2px;
             border-right: black solid 2px;
@@ -68,7 +72,7 @@
     <!--Body div-->
     <div class="row">
         <div class="col-md-3" id="LeftEmptySpace">
-            <!--Posts div-->
+            <!--All Posts div-->
             <div class="row categoriesRow">
                 <div class="col-md-1"></div>
                 <div class="col-md-6" id="allPosts">
@@ -123,12 +127,15 @@
         "use strict";
 
         $.ajax("data/blog.json").done(function MakeBlogPosts(data) {
+            var counter = 0;
             $.each(data, function (i, x) {
                 var content = "";
                 content += (
                     "<div class='row'>" +
                     "<div class='col-md-12 titleCats'>" +
-                    "<span>" +
+                    "<span id='" +
+                    counter +
+                    "'>" +
                     x.title +
                     "</span>" +
                     x.date +
@@ -143,19 +150,25 @@
                     "</div>" +
                     "<br>"
                 );
-
+                ++counter;
                 $("#posts").append(content);
             });
         });
 
         $.ajax("data/blog.json").done(function PostCategories(data) {
+            var counter = 0;
             $.each(data, function (index, post) {
                 var content = "";
                 content += (
                     "- " +
+                    "<a href='#" +
+                    counter +
+                    "'>" +
                     post.title +
+                    "</a>" +
                     "<br>"
                 );
+                ++ counter;
                 $("#allPosts").append(content);
             });
         });
