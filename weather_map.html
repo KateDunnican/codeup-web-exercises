@@ -130,16 +130,19 @@
     <!--Daily weather display-->
     <div class="row weatherdisplay">
         <!--Day 1-->
-        <div class="col-md-3 days" id="day0">
+        <div class="col-md-3 days" >
                     <span>Today</span>
+                    <div id="day0"></div>
         </div>
         <!--Day 2-->
-        <div class="col-md-3 days" id="day1">
+        <div class="col-md-3 days">
                     <span>Tomorrow</span>
+            <div id="day1"></div>
         </div>
         <!--Day 3-->
-        <div class="col-md-3 days" id="day2">
+        <div class="col-md-3 days">
                     <span>Day After</span>
+            <div id="day2"></div>
         </div>
     </div>
 
@@ -203,106 +206,17 @@
     };
 
    //Marker Info
-    var MapMarker = "San Antonio, TX";
+    var markerLocation = "San Antonio, TX";
 
     //Placing Marker
-    geocode(MapMarker, mapboxToken).then(function (result){
+    geocode(markerLocation, mapboxToken).then(function (result){
         new mapboxgl.Marker(markerOptions)
             .setLngLat(result)
             .addTo(map);
     });
 
-    <!-- DOING THINGS WITH COLLECTED INFO -->
-
-    $(".subheader").html("The weather in: " + MapMarker.address);
-
-
-
-    $("button").click(function DeclareUserInput(event) {
-        event.preventDefault();
-        var latitude = document.getElementById("lat").value;
-        var longitude = document.getElementById("long").value;
-        var userInput = [latitude, longitude];
-        console.log(userInput);
-
-        $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/" + userInput[0] + "," + userInput[1]).done(function ReportWeather(x) {
-            var counter = 0;
-            console.log(x);
-            console.log(new Date(x.currently.time * 1000));
-            $("#day0, #day1, #day2").html("");
-
-            for (var i = 0; i < 3; ++i){
-                var content = "";
-
-                var weatherIcon;
-
-                if (x.daily.data[i].icon === "clear-day") {
-                    weatherIcon = '<i class="fas fa-sun fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "clear-night") {
-                    weatherIcon = '<i class="fas fa-moon fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "rain") {
-                    weatherIcon = '<i class="fas fa-cloud-rain fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "snow") {
-                    weatherIcon = '<i class="far fa-snowflake fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "sleet") {
-                    weatherIcon = '<i class="fas fa-cloud-rain fa-3x"></i><i class="fas fa-temperature-low"></i>';
-                }
-                else if (x.daily.data[i].icon === "wind") {
-                    weatherIcon = '<i class="fas fa-wind fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "fog") {
-                    weatherIcon = '<i class="fas fa-smog fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "cloudy") {
-                    weatherIcon = '<i class="fas fa-cloud fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "partly-cloudy-day") {
-                    weatherIcon = '<i class="fas fa-cloud-sun fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "partly-cloudy-night") {
-                    weatherIcon = '<i class="fas fa-cloud-moon fa-3x"></i>';
-                }
-                else if (x.daily.data[i].icon === "hail") {
-                    weatherIcon = '<i class="fas fa-cloud-meatball fa-3x"></i><i class="fas fa-temperature-low"></i>';
-                }
-                else if (x.daily.data[i].icon === "thunderstorm") {
-                    weatherIcon = '<i class="fas fa-poo-storm fa-3x"></i>';
-                }
-
-                content += (
-                    "<p>" +
-                    "Temp range: " +
-                    x.daily.data[i].temperatureHigh + "F - " +
-                    x.daily.data[i].temperatureLow + "F" +
-                    "</p>" +
-                    "<p>" +
-                    "Feels like: " +
-                    x.daily.data[i].apparentTemperatureHigh + "F - " +
-                    x.daily.data[i].apparentTemperatureLow + "F" +
-                    "</p>" +
-                    "<p>" +
-                    weatherIcon +
-                    "</p>" +
-                    "<p>" +
-                    x.daily.data[i].summary +
-                    "</p>"
-                );
-
-                var TheCorrectDiv = "#day" + i;
-                $(TheCorrectDiv).append(content);
-            }
-        });
-
-        MapMarker = "";
-    });
-
-    <!-- GETTING AND DISPLAYING WEATHER INFO: DONE-->
-
-    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/29.4241,-98.4936").done(function ReportWeather(x) {
+    <!-- GETTING AND DISPLAYING SA WEATHER INFO -->
+        function getWeather(x) {
         var counter = 0;
         console.log(x);
         console.log(new Date(x.currently.time * 1000));
@@ -369,9 +283,40 @@
             );
 
             var TheCorrectDiv = "#day" + i;
-            $(TheCorrectDiv).append(content);
+            $(TheCorrectDiv).html("").append(content);
         }
+    }
+
+        function reportWeather(la, lo){
+            $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/" + la + "," + lo).done(function (data) {
+                getWeather(data)
+            });
+        }
+
+        reportWeather(29.4252, -98.4916);
+
+        $(".subheader").html("The weather in: " + markerLocation);
+
+    <!-- DOING THINGS WITH USER INPUT -->
+
+    $("button").click(function DeclareUserInput(event) {
+        event.preventDefault();
+        //FIX THIS SO THAT THE MARKER GIVE INPUT AND NOT THE BOXES
+        var latitude = document.getElementById("lat").value;
+        var longitude = document.getElementById("long").value;
+        var userInput = [latitude, longitude];
+        console.log(userInput);
+
+        reportWeather(userInput[0], userInput[1]);
+
+        markerLocation = "";
     });
+
+    function movedMarker() {
+        var lngLat = markerLocation.getLngLat();
+        reportWeather(lngLat.lat, lngLat.lng);
+    }
+    markerLocation.on('dragend', movedMarker);
 
 </script>
 </body>
