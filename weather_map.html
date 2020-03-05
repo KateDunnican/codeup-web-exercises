@@ -2,46 +2,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Weather Map</title>
     <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/b3eab56ba0.js" crossorigin="anonymous"></script>
+
     <!--MY CSS-->
+    <style>
+        .header {
+            font-family: 'Girassol', cursive;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .subheader {
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /*.weatherdisplay{*/
+        /*    */
+        /*}*/
+
+        .mapdiv {
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            height: 400px;
+            border: #0000FF 1px solid;
+        }
+
+        .locationdiv {
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            height: 100px;
+            border: #0000FF 1px solid;
+        }
+
+        .col-md-4 {
+            border: red 1px solid;
+            display: flex;
+            justify-content: center;
+        }
+
+    </style>
+
+
 </head>
 <body>
 <!--MY HTML-->
 <div class="container-fluid">
     <!--Header-->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 header">
             Kate's Weather Forecast
         </div>
     </div>
-    <!--Under Header-->
+    <!--Subheader-->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 subheader">
+            San Antonio Weather
         </div>
     </div>
     <!--Daily weather display-->
-    <div class="row">
+    <div class="row weatherdisplay">
         <!--Day 1-->
-        <div class="col-md-4">
+        <div class="col-md-4" id="day0">
+                    Today
         </div>
         <!--Day 2-->
-        <div class="col-md-4">
+        <div class="col-md-4" id="day1">
+                    Tomorrow
         </div>
         <!--Day 3-->
-        <div class="col-md-4">
-        </div>
-    </div>
-
-    <div class="row">
-        <!--The actual map-->
-        <div class="col-md-12">
+        <div class="col-md-4" id="day2">
+                    Day After
         </div>
     </div>
 
     <div class="row">
         <!--Enter own location-->
-        <div class="col-md-12">
+        <div class="col-md-12 locationdiv">
+            Enter location
+        </div>
+    </div>
+
+    <div class="row">
+        <!--The actual map-->
+        <div class="col-md-12 mapdiv">
+            Map here
         </div>
     </div>
 </div>
@@ -51,15 +107,113 @@
 <script src="js/jquery-2.2.4.js"></script>
 <script src="js/keys.js"></script>
 <script>
-    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/29.4241,-98.4936").done(function (data) {
-        console.log(data);
-        console.log(new Date(data.currently.time * 1000));
+
+    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/29.4241,-98.4936").done(function ReportWeather(x) {
+        var counter = 0;
+        console.log(x);
+        console.log(new Date(x.currently.time * 1000));
+
+        for (var i = 0; i < 3; ++i){
+            var content = "";
+
+            var weatherIcon;
+                if (x.daily.data[i].icon === "clear-day") {
+                    weatherIcon = "<i class='far fa-snowflake fa-3x'></i>";
+                }
+                else if (x.daily.data[i].icon === "clear-night") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "rain") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "snow") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "sleet") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "wind") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "fog") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "cloudy") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "partly-cloudy-day") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "partly-cloudy-night") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "hail") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "thunderstorm") {
+                    weatherIcon = "T";
+                }
+                else if (x.daily.data[i].icon === "tornado") {
+                    weatherIcon = "T";
+                }
+            console.log(weatherIcon);
+
+
+
+            content += (
+                //the current temp range
+                "<br>" +
+                "Temp range: " +
+                x.daily.data[i].temperatureHigh +
+                "F - " +
+                x.daily.data[i].temperatureLow +
+                "F" +
+                "<br>" +
+                //general condition
+                x.daily.data[i].summary +
+                "<br>" +
+                //icon for condition
+                // x.daily.data[i].icon +
+                        weatherIcon +
+                "<br>" +
+                //feels like:
+                "Feels like: " +
+                x.daily.data[i].apparentTemperatureHigh +
+                "F - " +
+                x.daily.data[i].apparentTemperatureLow +
+                "F"
+
+
+                // //the current temp range
+                // "<p>" +
+                // "Temp range: " +
+                // x.daily.data[i].temperatureHigh +
+                // "F - " +
+                // x.daily.data[i].temperatureLow +
+                // "F" +
+                // "</p>" +
+                // "<p>" +
+                // //general condition
+                // x.daily.data[i].summary +
+                // "</p>" +
+                // //icon for condition
+                // "<p>" +
+                //         weatherIcon +
+                // "</p>" +
+                // "<p>" +
+                // //feels like:
+                // "Feels like: " +
+                // x.daily.data[i].apparentTemperatureHigh +
+                // "F - " +
+                // x.daily.data[i].apparentTemperatureLow +
+                // "F" +
+                // "</p>"
+            );
+
+            var TheCorrectDiv = "#day" + i;
+            $(TheCorrectDiv).append(content);
+        }
     });
-
-
-
-
-
 
 
 </script>
