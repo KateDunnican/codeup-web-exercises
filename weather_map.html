@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Map</title>
+
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/b3eab56ba0.js" crossorigin="anonymous"></script>
 
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />
+
     <!--MY CSS-->
     <style>
+        body {
+            background-color: cadetblue;
+        }
         .header {
             font-family: 'Girassol', cursive;
             font-size: 50px;
@@ -26,36 +35,83 @@
             justify-content: center;
         }
 
-        /*.weatherdisplay{*/
-        /*    */
-        /*}*/
+        .weatherdisplay {
+            display: flex;
+            justify-content: center;
+        }
 
-        .mapdiv {
+        #mapdiv {
             font-size: 20px;
             display: flex;
             justify-content: center;
-            height: 400px;
-            border: #0000FF 1px solid;
+            height: 520px;
+            /*border: #0000FF 1px solid;*/
+            padding: 0;
+        }
+        .mapspacers {
+            background-color: cadetblue;
         }
 
         .locationdiv {
+            background-color: cadetblue;
             font-size: 20px;
             display: flex;
             justify-content: center;
-            height: 100px;
-            border: #0000FF 1px solid;
+            height: 50px;
+            /*border: #0000FF 1px solid;*/
         }
 
-        .col-md-4 {
-            border: red 1px solid;
+        #locationForm {
+            background-color: cadetblue;
+            font-size: 20px;
             display: flex;
             justify-content: center;
         }
 
+        input, label, button {
+            height: 50%;
+            align-self: center;
+            margin-left: 10px;
+        }
+
+        button{
+            font-size: 15px;
+        }
+
+        .days {
+            border: cadetblue 1px solid;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            opacity: 0.95;
+
+        }
+
+        p {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        span {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .mapboxgl-canvas-container{
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
     </style>
 
-
 </head>
+
+
+
+
 <body>
 <!--MY HTML-->
 <div class="container-fluid">
@@ -68,45 +124,183 @@
     <!--Subheader-->
     <div class="row">
         <div class="col-md-12 subheader">
-            San Antonio Weather
+
         </div>
     </div>
     <!--Daily weather display-->
     <div class="row weatherdisplay">
         <!--Day 1-->
-        <div class="col-md-4" id="day0">
-                    Today
+        <div class="col-md-3 days" id="day0">
+                    <span>Today</span>
         </div>
         <!--Day 2-->
-        <div class="col-md-4" id="day1">
-                    Tomorrow
+        <div class="col-md-3 days" id="day1">
+                    <span>Tomorrow</span>
         </div>
         <!--Day 3-->
-        <div class="col-md-4" id="day2">
-                    Day After
+        <div class="col-md-3 days" id="day2">
+                    <span>Day After</span>
         </div>
     </div>
 
     <div class="row">
         <!--Enter own location-->
         <div class="col-md-12 locationdiv">
-            Enter location
+
+            <label for="lat">Latitude: </label>
+            <input type="text" id="lat" name="latitude">
+
+            <label for="long">Longitude: </label>
+            <input type="text" id="long" name="longitude">
+
+<!--            <form action="" id="locationForm">-->
+<!--                <label for="lat">Latitude: </label>-->
+<!--                <input type="text" id="lat" name="latitude">-->
+
+<!--                <label for="long">Longitude: </label>-->
+<!--                <input type="text" id="long" name="longitude">-->
+<!--            </form>-->
+
+            <button>Search</button>
+
         </div>
     </div>
 
     <div class="row">
         <!--The actual map-->
-        <div class="col-md-12 mapdiv">
-            Map here
-        </div>
+        <div class="col-md-3 mapspacers"></div>
+        <div class="col-md-6" id="mapdiv"></div>
+        <div class="col-md-3 mapspacers"></div>
     </div>
 </div>
 
+<!-- Mapbox JS -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
 
 <!--MY JS/jQ-->
 <script src="js/jquery-2.2.4.js"></script>
 <script src="js/keys.js"></script>
 <script>
+
+    //The Map Itself
+    <!-- ALL THE MAP STUFF -->
+    mapboxgl.accessToken = mapboxToken;
+    var map = new mapboxgl.Map({
+        container: 'mapdiv',
+        style: "mapbox://styles/mapbox/satellite-streets-v11",
+        zoom: 10,
+        center: [-98.4916, 29.4252]
+    });
+
+    //Marker Appearance
+    var markerOptions = {
+        //color of marker
+        color: "rgb(102, 230, 245)",
+        //made marker draggable
+        draggable: true,
+    };
+
+   //Marker Info
+    var MapMarker = "San Antonio, TX";
+
+    //Placing Marker
+    geocode(MapMarker, mapboxToken).then(function (result){
+        new mapboxgl.Marker(markerOptions)
+            .setLngLat(result)
+            .addTo(map);
+    });
+
+    <!-- DOING THINGS WITH COLLECTED INFO -->
+
+    $(".subheader").html("The weather in: " + MapMarker.address);
+
+
+
+    $("button").click(function DeclareUserInput(event) {
+        event.preventDefault();
+        var latitude = document.getElementById("lat").value;
+        var longitude = document.getElementById("long").value;
+        var userInput = [latitude, longitude];
+        console.log(userInput);
+
+        $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/" + userInput[0] + "," + userInput[1]).done(function ReportWeather(x) {
+            var counter = 0;
+            console.log(x);
+            console.log(new Date(x.currently.time * 1000));
+            $("#day0, #day1, #day2").html("");
+
+            for (var i = 0; i < 3; ++i){
+                var content = "";
+
+                var weatherIcon;
+
+                if (x.daily.data[i].icon === "clear-day") {
+                    weatherIcon = '<i class="fas fa-sun fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "clear-night") {
+                    weatherIcon = '<i class="fas fa-moon fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "rain") {
+                    weatherIcon = '<i class="fas fa-cloud-rain fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "snow") {
+                    weatherIcon = '<i class="far fa-snowflake fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "sleet") {
+                    weatherIcon = '<i class="fas fa-cloud-rain fa-3x"></i><i class="fas fa-temperature-low"></i>';
+                }
+                else if (x.daily.data[i].icon === "wind") {
+                    weatherIcon = '<i class="fas fa-wind fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "fog") {
+                    weatherIcon = '<i class="fas fa-smog fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "cloudy") {
+                    weatherIcon = '<i class="fas fa-cloud fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "partly-cloudy-day") {
+                    weatherIcon = '<i class="fas fa-cloud-sun fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "partly-cloudy-night") {
+                    weatherIcon = '<i class="fas fa-cloud-moon fa-3x"></i>';
+                }
+                else if (x.daily.data[i].icon === "hail") {
+                    weatherIcon = '<i class="fas fa-cloud-meatball fa-3x"></i><i class="fas fa-temperature-low"></i>';
+                }
+                else if (x.daily.data[i].icon === "thunderstorm") {
+                    weatherIcon = '<i class="fas fa-poo-storm fa-3x"></i>';
+                }
+
+                content += (
+                    "<p>" +
+                    "Temp range: " +
+                    x.daily.data[i].temperatureHigh + "F - " +
+                    x.daily.data[i].temperatureLow + "F" +
+                    "</p>" +
+                    "<p>" +
+                    "Feels like: " +
+                    x.daily.data[i].apparentTemperatureHigh + "F - " +
+                    x.daily.data[i].apparentTemperatureLow + "F" +
+                    "</p>" +
+                    "<p>" +
+                    weatherIcon +
+                    "</p>" +
+                    "<p>" +
+                    x.daily.data[i].summary +
+                    "</p>"
+                );
+
+                var TheCorrectDiv = "#day" + i;
+                $(TheCorrectDiv).append(content);
+            }
+        });
+
+        MapMarker = "";
+    });
+
+    <!-- GETTING AND DISPLAYING WEATHER INFO: DONE-->
 
     $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/29.4241,-98.4936").done(function ReportWeather(x) {
         var counter = 0;
@@ -117,104 +311,67 @@
             var content = "";
 
             var weatherIcon;
-                if (x.daily.data[i].icon === "clear-day") {
-                    weatherIcon = "<i class='far fa-snowflake fa-3x'></i>";
-                }
-                else if (x.daily.data[i].icon === "clear-night") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "rain") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "snow") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "sleet") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "wind") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "fog") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "cloudy") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "partly-cloudy-day") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "partly-cloudy-night") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "hail") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "thunderstorm") {
-                    weatherIcon = "T";
-                }
-                else if (x.daily.data[i].icon === "tornado") {
-                    weatherIcon = "T";
-                }
-            console.log(weatherIcon);
 
-
+            if (x.daily.data[i].icon === "clear-day") {
+                weatherIcon = '<i class="fas fa-sun fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "clear-night") {
+                weatherIcon = '<i class="fas fa-moon fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "rain") {
+                weatherIcon = '<i class="fas fa-cloud-rain fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "snow") {
+                weatherIcon = '<i class="far fa-snowflake fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "sleet") {
+                weatherIcon = '<i class="fas fa-cloud-rain fa-3x"></i><i class="fas fa-temperature-low"></i>';
+            }
+            else if (x.daily.data[i].icon === "wind") {
+                weatherIcon = '<i class="fas fa-wind fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "fog") {
+                weatherIcon = '<i class="fas fa-smog fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "cloudy") {
+                weatherIcon = '<i class="fas fa-cloud fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "partly-cloudy-day") {
+                weatherIcon = '<i class="fas fa-cloud-sun fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "partly-cloudy-night") {
+                weatherIcon = '<i class="fas fa-cloud-moon fa-3x"></i>';
+            }
+            else if (x.daily.data[i].icon === "hail") {
+                weatherIcon = '<i class="fas fa-cloud-meatball fa-3x"></i><i class="fas fa-temperature-low"></i>';
+            }
+            else if (x.daily.data[i].icon === "thunderstorm") {
+                weatherIcon = '<i class="fas fa-poo-storm fa-3x"></i>';
+            }
 
             content += (
-                //the current temp range
-                "<br>" +
+                "<p>" +
                 "Temp range: " +
-                x.daily.data[i].temperatureHigh +
-                "F - " +
-                x.daily.data[i].temperatureLow +
-                "F" +
-                "<br>" +
-                //general condition
-                x.daily.data[i].summary +
-                "<br>" +
-                //icon for condition
-                // x.daily.data[i].icon +
-                        weatherIcon +
-                "<br>" +
-                //feels like:
-                "Feels like: " +
-                x.daily.data[i].apparentTemperatureHigh +
-                "F - " +
-                x.daily.data[i].apparentTemperatureLow +
-                "F"
-
-
-                // //the current temp range
-                // "<p>" +
-                // "Temp range: " +
-                // x.daily.data[i].temperatureHigh +
-                // "F - " +
-                // x.daily.data[i].temperatureLow +
-                // "F" +
-                // "</p>" +
-                // "<p>" +
-                // //general condition
-                // x.daily.data[i].summary +
-                // "</p>" +
-                // //icon for condition
-                // "<p>" +
-                //         weatherIcon +
-                // "</p>" +
-                // "<p>" +
-                // //feels like:
-                // "Feels like: " +
-                // x.daily.data[i].apparentTemperatureHigh +
-                // "F - " +
-                // x.daily.data[i].apparentTemperatureLow +
-                // "F" +
-                // "</p>"
+                    x.daily.data[i].temperatureHigh + "F - " +
+                    x.daily.data[i].temperatureLow + "F" +
+                "</p>" +
+                "<p>" +
+                    "Feels like: " +
+                    x.daily.data[i].apparentTemperatureHigh + "F - " +
+                    x.daily.data[i].apparentTemperatureLow + "F" +
+                "</p>" +
+                "<p>" +
+                    weatherIcon +
+                "</p>" +
+                "<p>" +
+                    x.daily.data[i].summary +
+                "</p>"
             );
 
             var TheCorrectDiv = "#day" + i;
             $(TheCorrectDiv).append(content);
         }
     });
-
 
 </script>
 </body>
