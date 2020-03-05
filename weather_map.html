@@ -146,28 +146,28 @@
         </div>
     </div>
 
-    <div class="row">
-        <!--Enter own location-->
-        <div class="col-md-12 locationdiv">
+<!--    <div class="row">-->
+<!--        &lt;!&ndash;Enter own location&ndash;&gt;-->
+<!--        <div class="col-md-12 locationdiv">-->
 
-            <label for="lat">Latitude: </label>
-            <input type="text" id="lat" name="latitude">
+<!--            <label for="lat">Latitude: </label>-->
+<!--            <input type="text" id="lat" name="latitude">-->
 
-            <label for="long">Longitude: </label>
-            <input type="text" id="long" name="longitude">
+<!--            <label for="long">Longitude: </label>-->
+<!--            <input type="text" id="long" name="longitude">-->
 
-<!--            <form action="" id="locationForm">-->
-<!--                <label for="lat">Latitude: </label>-->
-<!--                <input type="text" id="lat" name="latitude">-->
+<!--&lt;!&ndash;            <form action="" id="locationForm">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="lat">Latitude: </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" id="lat" name="latitude">&ndash;&gt;-->
 
-<!--                <label for="long">Longitude: </label>-->
-<!--                <input type="text" id="long" name="longitude">-->
-<!--            </form>-->
+<!--&lt;!&ndash;                <label for="long">Longitude: </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" id="long" name="longitude">&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
 
-            <button>Search</button>
+<!--            <button>Search</button>-->
 
-        </div>
-    </div>
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="row">
         <!--The actual map-->
@@ -187,39 +187,39 @@
 <script src="js/keys.js"></script>
 <script>
 
-    //The Map Itself
+        //The Map Itself
     <!-- ALL THE MAP STUFF -->
-    mapboxgl.accessToken = mapboxToken;
-    var map = new mapboxgl.Map({
-        container: 'mapdiv',
-        style: "mapbox://styles/mapbox/satellite-streets-v11",
-        zoom: 10,
-        center: [-98.4916, 29.4252]
-    });
+        mapboxgl.accessToken = mapboxToken;
+        var map = new mapboxgl.Map({
+            container: 'mapdiv',
+            style: "mapbox://styles/mapbox/satellite-streets-v11",
+            zoom: 10,
+            center: [-98.4916, 29.4252]
+        });
 
-    //Marker Appearance
-    var markerOptions = {
-        //color of marker
-        color: "rgb(102, 230, 245)",
-        //made marker draggable
-        draggable: true,
-    };
+        //Marker Appearance
+        var markerOptions = {
+            //color of marker
+            color: "rgb(102, 230, 245)",
+            //made marker draggable
+            draggable: true,
+        };
 
-   //Marker Info
-    var markerLocation = "San Antonio, TX";
+       //Marker Info
+        var markerLocation = "San Antonio, TX";
 
-    //Placing Marker
-    geocode(markerLocation, mapboxToken).then(function (result){
-        new mapboxgl.Marker(markerOptions)
-            .setLngLat(result)
-            .addTo(map);
-    });
+        //Placing Marker
+        var marker =
+            new mapboxgl.Marker(markerOptions)
+                .setLngLat([-98.4916, 29.4252])
+                .addTo(map);
+
 
     <!-- GETTING AND DISPLAYING SA WEATHER INFO -->
         function getWeather(x) {
         var counter = 0;
-        console.log(x);
-        console.log(new Date(x.currently.time * 1000));
+        // console.log(x);
+        // console.log(new Date(x.currently.time * 1000));
 
         for (var i = 0; i < 3; ++i){
             var content = "";
@@ -291,32 +291,47 @@
             $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/" + la + "," + lo).done(function (data) {
                 getWeather(data)
             });
+            $(".subheader").html("The weather in: " + markerLocation);
         }
 
         reportWeather(29.4252, -98.4916);
 
-        $(".subheader").html("The weather in: " + markerLocation);
+        // $(".subheader").html("The weather in: " + markerLocation);
 
     <!-- DOING THINGS WITH USER INPUT -->
 
-    $("button").click(function DeclareUserInput(event) {
-        event.preventDefault();
-        //FIX THIS SO THAT THE MARKER GIVE INPUT AND NOT THE BOXES
-        var latitude = document.getElementById("lat").value;
-        var longitude = document.getElementById("long").value;
-        var userInput = [latitude, longitude];
-        console.log(userInput);
+    // $("button").click(function DeclareUserInput(event) {
+    //     event.preventDefault();
+    //     //FIX THIS SO THAT THE MARKER GIVE INPUT AND NOT THE BOXES
+    //     var latitude = document.getElementById("lat").value;
+    //     var longitude = document.getElementById("long").value;
+    //     var userInput = [latitude, longitude];
+    //     console.log(userInput);
+    //
+    //     reportWeather(userInput[0], userInput[1]);
+    //
+    //     markerLocation = "fix this";
+    // });
 
-        reportWeather(userInput[0], userInput[1]);
-
-        markerLocation = "";
-    });
-
+    //Dragging Marker
     function movedMarker() {
-        var lngLat = markerLocation.getLngLat();
+        var lngLat = marker.getLngLat();
+        // console.log(marker.getLngLat());
+        reverseGeocode(lngLat, mapboxToken).then(function(results) {
+            // console.log(results);
+            markerLocation = results.features[3].place_name;
+            //TODO: why doesn't this work????
         reportWeather(lngLat.lat, lngLat.lng);
+        });
     }
-    markerLocation.on('dragend', movedMarker);
+    marker.on('dragend', movedMarker);
+
+
+        reverseGeocode({lng: -98.4916, lat: 29.4252}, mapboxToken).then(function(results) {
+            // console.log(results.features[3].place_name);
+        });
+
+
 
 </script>
 </body>
