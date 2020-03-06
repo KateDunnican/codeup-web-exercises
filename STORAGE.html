@@ -572,6 +572,98 @@
     });
 
 
+<!-- DOM ASSESSMENT -->
+
+    // 1.
+    // <button id="change-bg-color">
+    //     Change the background color
+    // </button>
+
+    $("#change-bg-color").click(function () {
+        $("body").css("background-color", "blue")
+    });
+
+    // 2.
+    // <button id="append-to-ul">Append to the ul</button>
+    // <ul id="append-to-me"></ul>
+
+    $("#append-to-ul").click(function () {
+        $("#append-to-me").append(
+            "<li>" +
+            "text" +
+            "</li>"
+        );
+    });
+
+    // 3.
+    // <h1 id="message">Hello, World!</h1>
+
+    $("#message").delay(2000).queue(function(){
+        $(this).html("Goodbye, World!");
+    });
+
+    //OR
+
+    setTimeout(function () {
+        $("#message").html("Goodbye, World!");
+    }, 2000);
+
+
+    // 4.
+    // <ul id="hl-toggle">
+    //     <li>1</li>
+    //     <li>2</li>
+    //     <li>3</li>
+    //     <li>4</li>
+    // </ul>
+
+    $("#hl-toggle > li").click(function () {
+        console.log($(this).css("background-color"));
+        if (($(this).css("background-color")) === "rgb(255, 255, 0)"){
+            $(this).css("background-color", "rgba(0, 0, 0, 0)");
+        }
+        else {
+            $(this).css("background-color", "rgb(255, 255, 0)");
+        }
+    });
+
+    //OR
+
+    $("#hl-toggle").children().click(function () {
+        //Same as above
+    });
+
+    //OR APPARENTLY
+
+    $("#hl-toggle").children().click(function () {
+        $(this).toggleClass("highlighter");
+    });
+
+    // 5.
+    // <input id="input">
+    //     <button id="upcase-name">Upper Case</button>
+    // <p id="output"></p>
+
+    $("#upcase-name").click(function () {
+        var myName = ($("#input").val().toUpperCase());
+        $("#output").html("Your name uppercased is: " + myName)
+    });
+
+    // 6.
+    // <ul id="font-grow">
+    //     <li>text</li>
+    //     <li>text</li>
+    //     <li>text</li>
+    // </ul>
+
+    $("#font-grow > li").dblclick(function () {
+        var fontSize = parseInt($(this).css("font-size"));
+        fontSize = fontSize * 2 + "px";
+        $(this).css("font-size", fontSize);
+    });
+
+
+
 </script>
 </body>
 </html>

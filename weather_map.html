@@ -318,18 +318,19 @@
         var lngLat = marker.getLngLat();
         // console.log(marker.getLngLat());
         reverseGeocode(lngLat, mapboxToken).then(function(results) {
-            // console.log(results);
-            markerLocation = results.features[3].place_name;
+            markerLocation = results;
+            // console.log(data);
             //TODO: why doesn't this work????
+            // markerLocation = results.features[3].place_name;
         reportWeather(lngLat.lat, lngLat.lng);
         });
     }
     marker.on('dragend', movedMarker);
 
 
-        reverseGeocode({lng: -98.4916, lat: 29.4252}, mapboxToken).then(function(results) {
-            // console.log(results.features[3].place_name);
-        });
+        // reverseGeocode({lng: -98.4916, lat: 29.4252}, mapboxToken).then(function(results) {
+        //     console.log(results);
+        // });
 
 
 
