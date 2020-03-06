@@ -108,105 +108,124 @@
     </style>
 
 </head>
-
-
-
-
 <body>
-<!--MY HTML-->
-<div class="container-fluid">
-    <!--Header-->
-    <div class="row">
-        <div class="col-md-12 header">
-            Kate's Weather Forecast
+    <!--MY HTML-->
+    <div class="container-fluid">
+        <!--Header-->
+        <div class="row">
+            <div class="col-md-12 header">
+                Kate's Weather Forecast
+            </div>
+        </div>
+        <!--Subheader-->
+        <div class="row">
+            <div class="col-md-12 subheader">
+
+            </div>
+        </div>
+        <!--Daily weather display-->
+        <div class="row weatherdisplay">
+            <!--Day 1-->
+            <div class="col-md-3 days" >
+                        <span>Today</span>
+                        <div id="day0"></div>
+            </div>
+            <!--Day 2-->
+            <div class="col-md-3 days">
+                        <span>Tomorrow</span>
+                <div id="day1"></div>
+            </div>
+            <!--Day 3-->
+            <div class="col-md-3 days">
+                        <span>Day After</span>
+                <div id="day2"></div>
+            </div>
+        </div>
+        <div class="row">
+            <!--The actual map-->
+            <div class="col-md-3 mapspacers"></div>
+            <div class="col-md-6" id="mapdiv"></div>
+            <div class="col-md-3 mapspacers"></div>
         </div>
     </div>
-    <!--Subheader-->
-    <div class="row">
-        <div class="col-md-12 subheader">
 
-        </div>
-    </div>
-    <!--Daily weather display-->
-    <div class="row weatherdisplay">
-        <!--Day 1-->
-        <div class="col-md-3 days" >
-                    <span>Today</span>
-                    <div id="day0"></div>
-        </div>
-        <!--Day 2-->
-        <div class="col-md-3 days">
-                    <span>Tomorrow</span>
-            <div id="day1"></div>
-        </div>
-        <!--Day 3-->
-        <div class="col-md-3 days">
-                    <span>Day After</span>
-            <div id="day2"></div>
-        </div>
-    </div>
-    <div class="row">
-        <!--The actual map-->
-        <div class="col-md-3 mapspacers"></div>
-        <div class="col-md-6" id="mapdiv"></div>
-        <div class="col-md-3 mapspacers"></div>
-    </div>
-</div>
-
-<!-- Mapbox JS -->
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
-<script src="js/mapbox-geocoder-utils.js"></script>
-<!-- Mapbox stuff for search box-->
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
-<link
-        rel="stylesheet"
-        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
-        type="text/css"
-/>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+    <!-- Mapbox JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <!-- Mapbox stuff for search box-->
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
+            type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
 
-<!--MY JS/jQ-->
-<script src="js/jquery-2.2.4.js"></script>
-<script src="js/keys.js"></script>
-<script>
+    <!--MY JS/jQ-->
+    <script src="js/jquery-2.2.4.js"></script>
+    <script src="js/keys.js"></script>
+    <script>
+
+        //
+    <!-- ALL THE MAP STUFF -->
+        //SA Coords
+        var lat = 29.4252;
+        var long = -98.4916;
 
         //The Map Itself
-    <!-- ALL THE MAP STUFF -->
         mapboxgl.accessToken = mapboxToken;
         var map = new mapboxgl.Map({
             container: 'mapdiv',
             style: "mapbox://styles/mapbox/satellite-streets-v11",
             zoom: 10,
-            center: [-98.4916, 29.4252]
+            center: [long, lat]
         });
-
-        //Search Box
-        map.addControl(
-            new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
-            })
-        );
 
         //Marker Appearance
         var markerOptions = {
-            //color of marker
             color: "rgb(102, 230, 245)",
-            //made marker draggable
             draggable: true,
         };
 
        //Marker Info
-        var markerLocation = "San Antonio, TX";
+        var markerLocation = "San Antonio, Texas, United States";
 
         //Placing Marker
         var marker =
             new mapboxgl.Marker(markerOptions)
-                .setLngLat([-98.4916, 29.4252])
+                .setLngLat([long, lat])
                 .addTo(map);
 
+        //Search Box and new marker
+        map.addControl(
+            new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                // mapboxgl: mapboxgl
+                // marker.setLngLat([long, lat])
+            }),
+                console.log(mapboxgl)
+        );
+
+
+    <!-- MOVING MARKER WHEN DRAGGED -->
+
+        marker.setLngLat([long,lat]);
+
+        //Dragging Marker
+        function movedMarker() {
+            var lngLat = marker.getLngLat();
+            lat = lngLat.lat;
+            long = lngLat.lng;
+            map.setCenter([long, lat]);
+            reportWeather(lat, long);
+            reverseGeocode(lngLat, mapboxToken).then(function(results) {
+                markerLocation = results;
+            });
+        }
+
+        marker.on('dragend', movedMarker);
 
     <!-- GETTING AND DISPLAYING SA WEATHER INFO -->
         function getWeather(x) {
@@ -287,33 +306,7 @@
             $(".subheader").html("The weather in: " + markerLocation);
         }
 
-        reportWeather(29.4252, -98.4916);
-
-    <!-- DOING THINGS WITH USER INPUT -->
-
-    // $("button").click(function DeclareUserInput(event) {
-    //     event.preventDefault();
-    //     //FIX THIS SO THAT THE MARKER GIVE INPUT AND NOT THE BOXES
-    //     var latitude = document.getElementById("lat").value;
-    //     var longitude = document.getElementById("long").value;
-    //     var userInput = [latitude, longitude];
-    //     console.log(userInput);
-    //
-    //     reportWeather(userInput[0], userInput[1]);
-    //
-    //     markerLocation = "fix this";
-    // });
-
-    //Dragging Marker
-    function movedMarker() {
-        var lngLat = marker.getLngLat();
-        // console.log(marker.getLngLat());
-        reverseGeocode(lngLat, mapboxToken).then(function(results) {
-            markerLocation = results;
-            reportWeather(lngLat.lat, lngLat.lng);
-        });
-    }
-    marker.on('dragend', movedMarker);
+        reportWeather(lat, long);
 
 </script>
 </body>
