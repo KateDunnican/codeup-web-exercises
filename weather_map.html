@@ -145,30 +145,6 @@
             <div id="day2"></div>
         </div>
     </div>
-
-<!--    <div class="row">-->
-<!--        &lt;!&ndash;Enter own location&ndash;&gt;-->
-<!--        <div class="col-md-12 locationdiv">-->
-
-<!--            <label for="lat">Latitude: </label>-->
-<!--            <input type="text" id="lat" name="latitude">-->
-
-<!--            <label for="long">Longitude: </label>-->
-<!--            <input type="text" id="long" name="longitude">-->
-
-<!--&lt;!&ndash;            <form action="" id="locationForm">&ndash;&gt;-->
-<!--&lt;!&ndash;                <label for="lat">Latitude: </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <input type="text" id="lat" name="latitude">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                <label for="long">Longitude: </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <input type="text" id="long" name="longitude">&ndash;&gt;-->
-<!--&lt;!&ndash;            </form>&ndash;&gt;-->
-
-<!--            <button>Search</button>-->
-
-<!--        </div>-->
-<!--    </div>-->
-
     <div class="row">
         <!--The actual map-->
         <div class="col-md-3 mapspacers"></div>
@@ -179,8 +155,17 @@
 
 <!-- Mapbox JS -->
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
-<script src="js/keys.js"></script>
 <script src="js/mapbox-geocoder-utils.js"></script>
+<!-- Mapbox stuff for search box-->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+<link
+        rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
+        type="text/css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
 
 <!--MY JS/jQ-->
 <script src="js/jquery-2.2.4.js"></script>
@@ -196,6 +181,14 @@
             zoom: 10,
             center: [-98.4916, 29.4252]
         });
+
+        //Search Box
+        map.addControl(
+            new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
+            })
+        );
 
         //Marker Appearance
         var markerOptions = {
@@ -296,8 +289,6 @@
 
         reportWeather(29.4252, -98.4916);
 
-        // $(".subheader").html("The weather in: " + markerLocation);
-
     <!-- DOING THINGS WITH USER INPUT -->
 
     // $("button").click(function DeclareUserInput(event) {
@@ -319,20 +310,10 @@
         // console.log(marker.getLngLat());
         reverseGeocode(lngLat, mapboxToken).then(function(results) {
             markerLocation = results;
-            // console.log(data);
-            //TODO: why doesn't this work????
-            // markerLocation = results.features[3].place_name;
-        reportWeather(lngLat.lat, lngLat.lng);
+            reportWeather(lngLat.lat, lngLat.lng);
         });
     }
     marker.on('dragend', movedMarker);
-
-
-        // reverseGeocode({lng: -98.4916, lat: 29.4252}, mapboxToken).then(function(results) {
-        //     console.log(results);
-        // });
-
-
 
 </script>
 </body>
