@@ -199,14 +199,23 @@
                 .addTo(map);
 
         //Search Box and new marker
-        map.addControl(
-            new MapboxGeocoder({
+        //TODO Fix this
+
+            var geocoder = new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
-                // mapboxgl: mapboxgl
-                // marker.setLngLat([long, lat])
-            }),
-                console.log(mapboxgl)
-        );
+                mapboxgl: mapboxgl
+            });
+            map.addControl(geocoder);
+            geocoder.on("result" , existence);
+
+            function existence () {
+                console.log(geocoder.getProximity());
+                lat = geocoder.getProximity().latitude;
+                long = geocoder.getProximity().longitude;
+                reportWeather(lat, long);
+                // marker.setLngLat([long,lat]);
+                marker.setFlyTo(geocoder);
+            }
 
 
     <!-- MOVING MARKER WHEN DRAGGED -->
