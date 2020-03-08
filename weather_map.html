@@ -199,14 +199,14 @@
                 .addTo(map);
 
         //Search Box and new marker
-        //TODO Fix this
+        //TODO Fix this (note that coords logged are still SA coords
 
             var geocoder = new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 mapboxgl: mapboxgl
             });
+
             map.addControl(geocoder);
-            geocoder.on("result" , existence);
 
             function existence () {
                 console.log(geocoder.getProximity());
@@ -214,8 +214,11 @@
                 long = geocoder.getProximity().longitude;
                 reportWeather(lat, long);
                 // marker.setLngLat([long,lat]);
-                marker.setFlyTo(geocoder);
+                // marker.setFlyTo(geocoder);
             }
+
+            geocoder.on("result" , existence);
+
 
 
     <!-- MOVING MARKER WHEN DRAGGED -->
