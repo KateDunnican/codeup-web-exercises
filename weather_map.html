@@ -15,7 +15,12 @@
     <script src="https://kit.fontawesome.com/b3eab56ba0.js" crossorigin="anonymous"></script>
 
     <!-- Mapbox CSS -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <link
+            rel="stylesheet"
+            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
+            type="text/css"
+    />
 
     <!--MY CSS-->
     <style>
@@ -135,15 +140,11 @@
     </div>
 
     <!-- Mapbox JS -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <script src="js/mapbox-geocoder-utils.js"></script>
     <!-- Mapbox stuff for search box-->
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
-    <link
-            rel="stylesheet"
-            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
-            type="text/css"
-    />
+
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
@@ -184,49 +185,45 @@
                 .addTo(map);
 
         //Search Box and new marker
-        //TODO Fix this (note that coords logged are still SA coords
-
             var geocoder = new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
+                mapboxgl: mapboxgl,
+                marker: false
             });
 
             map.addControl(geocoder);
 
+
     <!-- MOVING MARKER WHEN SEARCHED -->
-            function searchedMarker () {
-                console.log(geocoder.getProximity());
-                lat = geocoder.getProximity().latitude;
-                long = geocoder.getProximity().longitude;
-                reportWeather(lat, long);
-                // marker.setLngLat([long,lat]);
-                // marker.setFlyTo(geocoder);
-            }
-
-            geocoder.on("result" , searchedMarker);
-
+        geocoder.on('result', function(e) {
+            lngLat = e.result.geometry.coordinates;
+            long = lngLat[0];
+            lat = lngLat[1];
+            var latLongObject = {};
+            latLongObject.lat = lat;
+            latLongObject.lng = long;
+            markerLocation = e.result.place_name;
+            marker.setLngLat(latLongObject);
+            reportWeather(lat, long);
+        });
 
 
     <!-- MOVING MARKER WHEN DRAGGED -->
-        //Dragging Marker
-        function draggedMarker() {
+        marker.on('dragend', function () {
             var lngLat = marker.getLngLat();
             lat = lngLat.lat;
             long = lngLat.lng;
             map.setCenter([long, lat]);
-            reportWeather(lat, long);
             reverseGeocode(lngLat, mapboxToken).then(function(results) {
                 markerLocation = results;
+                console.log(markerLocation);
+                reportWeather(lat, long);
             });
-        }
+        });
 
-        marker.on('dragend', draggedMarker);
 
     <!-- GETTING AND DISPLAYING SA WEATHER INFO -->
         function getWeather(x) {
-        var counter = 0;
-        // console.log(x);
-        // console.log(new Date(x.currently.time * 1000));
 
         for (var i = 0; i < 3; ++i){
             var content = "";
