@@ -193,7 +193,8 @@
 
             map.addControl(geocoder);
 
-            function existence () {
+    <!-- MOVING MARKER WHEN SEARCHED -->
+            function searchedMarker () {
                 console.log(geocoder.getProximity());
                 lat = geocoder.getProximity().latitude;
                 long = geocoder.getProximity().longitude;
@@ -202,16 +203,13 @@
                 // marker.setFlyTo(geocoder);
             }
 
-            geocoder.on("result" , existence);
+            geocoder.on("result" , searchedMarker);
 
 
 
     <!-- MOVING MARKER WHEN DRAGGED -->
-
-        marker.setLngLat([long,lat]);
-
         //Dragging Marker
-        function movedMarker() {
+        function draggedMarker() {
             var lngLat = marker.getLngLat();
             lat = lngLat.lat;
             long = lngLat.lng;
@@ -222,7 +220,7 @@
             });
         }
 
-        marker.on('dragend', movedMarker);
+        marker.on('dragend', draggedMarker);
 
     <!-- GETTING AND DISPLAYING SA WEATHER INFO -->
         function getWeather(x) {
