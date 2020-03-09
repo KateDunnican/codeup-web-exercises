@@ -50,7 +50,6 @@
             display: flex;
             justify-content: center;
             height: 520px;
-            /*border: #0000FF 1px solid;*/
             padding: 0;
         }
 
@@ -196,12 +195,13 @@
 
     <!-- MOVING MARKER WHEN SEARCHED -->
         geocoder.on('result', function(e) {
+            console.log(e);
             lngLat = e.result.geometry.coordinates;
             long = lngLat[0];
             lat = lngLat[1];
             var latLongObject = {};
-            latLongObject.lat = lat;
-            latLongObject.lng = long;
+                latLongObject.lat = lat;
+                latLongObject.lng = long;
             markerLocation = e.result.place_name;
             marker.setLngLat(latLongObject);
             reportWeather(lat, long);
