@@ -1,8 +1,8 @@
 const wait = (x) => {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve();
-        }, x);
+        setTimeout(() => {resolve()}, x);
+        //OR
+        setTimeout(resolve, x);
     });
 };
 
