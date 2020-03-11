@@ -194,8 +194,8 @@ $(document).ready(function() {
             return number;
         } else {
             for(var i = 0; i < (numArr.length - numArr.length % 3) / 3; i++) {
-                console.log('for iteration');
-                console.log(i * 3 + extra + startPos);
+                // console.log('for iteration');
+                // console.log(i * 3 + extra + startPos);
                 if(i*3+extra+startPos >= initialLength+extra) {
                     // console.log('stop');
                     break;
@@ -269,23 +269,35 @@ const users = [
     let users2 = users.map(x => x.email);
         console.log(users2);
 
-// Use .reduce to get the total years of experience from the list of users. Once you get the total of years you can use the result to calculate the average.
+// Use .reduce to get the total years of experience from the list of users.
+// Once you get the total of years you can use the result to calculate the average.
 
     let users3 = users.reduce((total, x) => {
         return x.yearsOfExperience + total;
     }, 0);
-        console.log(users3);
+        console.log((users3/users.length) + " years");
 
 // Use .reduce to get the longest email from the list of users.
 
-    let users4 = users2.sort(
+    let users41 = users2.sort(
         (x, y) => y.length - x.length
     );
-        console.log(users4[0]);
+        console.log(users41[0]);
+
+        //OR
+
+    let users42 = users.reduce((currentLongest, user) => user.email.length > currentLongest.length ? user.email : currentLongest, "j");
+
+        console.log(users42);
 
 // Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
 
-    let users5 = users.reduce((total, x) => {
+    let users51 = users.reduce((total, x) => {
         return total + x.name + " ";
     }, "");
-        console.log(users5);
+        console.log(users51);
+
+        //OR
+
+    let users52 = users.reduce((total, x) => total === "" ? x.name : total + ", " + x.name, "");
+        console.log(users52);
